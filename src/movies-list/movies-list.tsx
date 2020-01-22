@@ -5,7 +5,7 @@ import './movies-list.css';
 export const MoviesList = (props: IProps[]) => {
     return (
         <section className='wrapper'>
-            {Object.keys(props).map((movie, index) => {
+            {Object.keys(props).map((_, index) => {
                 return <MovieItem {...props[index]} key={props[index].id} />;
             })}
         </section>

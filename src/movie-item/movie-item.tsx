@@ -25,7 +25,7 @@ export const MovieItem = (props: IProps) => {
             <p className='movie-card__overview'>{overview}</p>
             <div className='movie-card__footer'>
                 <span>{duration} min</span>
-                <span>{likes}</span>
+                <span>likes: {likes}</span>
             </div>
         </div>
     );
