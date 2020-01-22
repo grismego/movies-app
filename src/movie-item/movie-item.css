@@ -1,0 +1,8 @@
+/* .movie-card {
+} */
+.movie-card__footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-top: 1px solid salmon;
+}
