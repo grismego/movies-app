@@ -21,6 +21,7 @@ export const MovieItem = (props: IProps) => {
     const { title, overview, duration, likes } = props;
     return (
         <div className='movie-card'>
+            <img src={`https://picsum.photos/id/${Math.floor(Math.random() * (1000 - 1)) + 1}/200/300`} alt='' />
             <h1 className='movie-card__title'>{title}</h1>
             <p className='movie-card__overview'>{overview}</p>
             <div className='movie-card__footer'>
