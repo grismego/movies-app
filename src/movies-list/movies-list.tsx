@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { MovieItem, IMoviesItemType } from '../movie-item/movie-item';
-import axios from 'axios';
 import './movies-list.css';
 
 export const MoviesList = () => {
     const [movies, setMovies] = useState<IMoviesItemType[]>([]);
 
     useEffect(() => {
-        /*
-            TODO:
-            Вынести axios в отдельный файл / функцию   
-        */
-        axios.get(`http://localhost:3000/movies.json`).then(response => {
-            const data = response.data;
-            setMovies(data);
-        });
+        fetch(`https://devlab.website/v1/movies`)
+            .then(response => response.json())
+            .then(response => {
+                const data = response;
+                setMovies(data);
+            });
     }, []);
 
     return (

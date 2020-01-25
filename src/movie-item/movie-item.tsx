@@ -19,6 +19,7 @@ export interface IMoviesItemType {
 
 export const MovieItem = (props: IMoviesItemType) => {
     const { title, overview, duration, likes } = props;
+
     return (
         <div className='movie-card'>
             <img src={`https://picsum.photos/id/${Math.floor(Math.random() * (1000 - 1)) + 1}/200/300`} alt={title} />
