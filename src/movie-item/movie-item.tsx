@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './movie-item.css';
 
 export interface IMoviesItemType {
@@ -20,6 +20,8 @@ export interface IMoviesItemType {
 export const MovieItem = (props: IMoviesItemType) => {
     const { title, overview, duration, likes } = props;
 
+    const [isFavorite, setFavorite] = useState(false);
+
     return (
         <div className='movie-card'>
             <img src={`https://picsum.photos/id/${Math.floor(Math.random() * (1000 - 1)) + 1}/200/300`} alt={title} />
@@ -29,6 +31,13 @@ export const MovieItem = (props: IMoviesItemType) => {
                 <span>{duration} min</span>
                 <span>likes: {likes}</span>
             </div>
+            <button
+                onClick={() => {
+                    setFavorite(!isFavorite);
+                }}
+            >
+                {isFavorite ? `Убрать из избранного` : `Добавить в избранное`}
+            </button>
         </div>
     );
 };
