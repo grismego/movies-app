@@ -18,13 +18,13 @@ export interface IMoviesItemType {
 }
 
 export const MovieItem = (props: IMoviesItemType) => {
-    const { title, overview, duration, likes } = props;
+    const { title, overview, duration, likes, poster_path } = props;
 
     const [isFavorite, setFavorite] = useState(false);
 
     return (
         <div className='movie-card'>
-            <img src={`https://picsum.photos/id/${Math.floor(Math.random() * (1000 - 1)) + 1}/200/300`} alt={title} />
+            <img src={poster_path} alt={title} />
             <h1 className='movie-card__title'>{title}</h1>
             <p className='movie-card__overview'>{overview}</p>
             <div className='movie-card__footer'>
