@@ -1,8 +1,14 @@
 import React from 'react';
 import { MoviesList } from './movies-list/movies-list';
+import { Header } from './header/header';
 
 const App: React.FC = () => {
-    return <MoviesList />;
+    return (
+        <>
+            <Header />
+            <MoviesList />
+        </>
+    );
 };
 
 export default App;

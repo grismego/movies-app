@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './movie-item.css';
+import style from './movie-item.module.css';
 
 export interface IMoviesItemType {
     id: number;
@@ -23,21 +24,24 @@ export const MovieItem = (props: IMoviesItemType) => {
     const [isFavorite, setFavorite] = useState(false);
 
     return (
-        <div className='movie-card'>
-            <img src={poster_path} alt={title} />
-            <h1 className='movie-card__title'>{title}</h1>
-            <p className='movie-card__overview'>{overview}</p>
-            <div className='movie-card__footer'>
-                <span>{duration} min</span>
-                <span>likes: {likes}</span>
+        <div className={style.card}>
+            <img src={poster_path} alt={title} className={style.img} />
+            <div className={style.footer}>
+                <h1 className={style.title}>{title}</h1>
+                <p className='movie-card__overview'>{overview}</p>
+                <div className='movie-card__footer'>
+                    <span>{duration} min</span>
+                    <span>likes: {likes}</span>
+                </div>
+                <button
+                    className={style.button}
+                    onClick={() => {
+                        setFavorite(!isFavorite);
+                    }}
+                >
+                    <span>{isFavorite ? `Убрать из избранного` : `Добавить в избранное`}</span>
+                </button>
             </div>
-            <button
-                onClick={() => {
-                    setFavorite(!isFavorite);
-                }}
-            >
-                {isFavorite ? `Убрать из избранного` : `Добавить в избранное`}
-            </button>
         </div>
     );
 };

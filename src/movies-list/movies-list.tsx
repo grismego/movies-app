@@ -11,12 +11,16 @@ export const MoviesList = () => {
         fetch(MOVIES_URL)
             .then(response => response.json())
             .then(response => {
-                const data = response.map((movie: { poster_path: string }) => {
-                    movie[`poster_path`] =
-                        movie[`poster_path`].length > 0 ? movie[`poster_path`] : generateMoviePoster();
-                    return movie;
-                });
-                setMovies(data);
+                setMovies(
+                    response.map((movie: { poster_path: string }) => {
+                        movie[`poster_path`] =
+                            movie[`poster_path`].length > 0 ? movie[`poster_path`] : generateMoviePoster();
+                        return movie;
+                    })
+                );
+            })
+            .catch(err => {
+                console.error(err);
             });
     }, []);
 

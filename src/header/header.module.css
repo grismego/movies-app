@@ -1,0 +1,18 @@
+.header {
+    max-width: 1200px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+}
+.list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+}
+
+.list li {
+    padding: 0 16px;
+}
