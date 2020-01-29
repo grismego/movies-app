@@ -1,7 +1,7 @@
-import { GET_MOVIES, RESET_ALL } from './actions-types';
+import { LOAD_MOVIES, RESET_ALL } from './actions-types';
 
 export const getMovies = (newElements: ListElement[]) => ({
-    type: GET_MOVIES,
+    type: LOAD_MOVIES,
     payload: newElements,
 });
 

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import './movie-item.css';
+// import './movie-item.css';
 import style from './movie-item.module.css';
+import { POSTER_PATH } from './../constants';
+
+import { faHeart, faChevronRight, faHeartbeat, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export interface IMoviesItemType {
     id: number;
@@ -25,23 +29,40 @@ export const MovieItem = (props: IMoviesItemType) => {
 
     return (
         <div className={style.card}>
-            <img src={poster_path} alt={title} className={style.img} />
+            <img src={`${POSTER_PATH}/${poster_path}`} alt={title} className={style.img} />
+
             <div className={style.footer}>
-                <h1 className={style.title}>{title}</h1>
-                <p className='movie-card__overview'>{overview}</p>
-                <div className='movie-card__footer'>
-                    <span>{duration} min</span>
-                    <span>likes: {likes}</span>
-                </div>
+                <a href='/' className={style.link}>
+                    More Info{' '}
+                    <span>
+                        <FontAwesomeIcon border={false} icon={faChevronRight} />
+                    </span>
+                </a>
                 <button
                     className={style.button}
                     onClick={() => {
                         setFavorite(!isFavorite);
                     }}
                 >
-                    <span>{isFavorite ? `Убрать из избранного` : `Добавить в избранное`}</span>
+                    <FontAwesomeIcon icon={faHeart} className={style.iconHeart} />
                 </button>
             </div>
+            {/* <div className={style.footer}>
+                 <h1 className={style.title}>{title}</h1>
+                <p className='movie-card__overview'>{overview}</p>
+                <div className='movie-card__footer'>
+                    <span>{duration} min</span>
+                    <span>likes: {likes}</span>
+                </div> */}
+            {/* <button
+                    className={style.button}
+                    onClick={() => {
+                        setFavorite(!isFavorite);
+                    }}
+                >
+                    <span>{isFavorite ? `Убрать из избранного` : `Добавить в избранное`}</span>
+                </button> 
+            </div>*/}
         </div>
     );
 };
