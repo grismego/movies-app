@@ -1,13 +1,13 @@
 import { LOAD_MOVIES } from './../actions-types';
 
 const intialState = {
-    films: [],
+    movies: [],
 };
 
 export function pageReducer(state = intialState, action: Action<ActionsT>) {
     switch (action.type) {
         case LOAD_MOVIES:
-            return { ...state, films: action.payload };
+            return { ...state, movies: action.payload };
 
         default:
             return state;

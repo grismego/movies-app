@@ -20,12 +20,13 @@ export interface IMoviesItemType {
     director?: string;
     poster_path?: string;
     release_date: string;
+    isFavorite: boolean;
 }
 
 export const MovieItem = (props: IMoviesItemType) => {
-    const { title, overview, duration, likes, poster_path } = props;
+    const { title, overview, duration, likes, poster_path, isFavorite } = props;
 
-    const [isFavorite, setFavorite] = useState(false);
+    // const [isFavorite, setFavorite] = useState(false);
 
     return (
         <div className={style.card}>
@@ -41,10 +42,13 @@ export const MovieItem = (props: IMoviesItemType) => {
                 <button
                     className={style.button}
                     onClick={() => {
-                        setFavorite(!isFavorite);
+                        // setFavorite(!isFavorite);
                     }}
                 >
-                    <FontAwesomeIcon icon={faHeart} className={style.iconHeart} />
+                    <FontAwesomeIcon
+                        icon={faHeart}
+                        className={style[`${isFavorite ? 'iconHeartActive' : 'iconHeart'}`]}
+                    />
                 </button>
             </div>
             {/* <div className={style.footer}>

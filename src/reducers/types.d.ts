@@ -12,6 +12,7 @@ type ListElement = {
     director?: string;
     poster_path?: string;
     release_date: string;
+    isFavorite?: boolean;
 };
 
 type RootStore = { list: ListElement[] };

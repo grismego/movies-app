@@ -4,26 +4,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMovies } from './../reducers/actions';
 import { MOVIES_URL } from './../constants';
 import './movies-list.css';
+import { addingFavoriteKey } from '../reducers/page/selectors';
 
 export const MoviesList = () => {
-    const films = useSelector((state: { page: { films: [] } }) => state.page.films);
+    const moviesList = useSelector((state: { page: { movies: [] } }) => state.page.movies);
     const dispatch = useDispatch();
 
     useEffect(() => {
         fetch(`${MOVIES_URL}/movies`)
             .then(response => response.json())
             .then(response => {
-                dispatch(getMovies(response));
+                const moviesWithKey = addingFavoriteKey(response);
+                dispatch(getMovies(moviesWithKey));
             })
             .catch(err => {
                 console.error(err);
             });
-        /* не понимаю что поставить в квадратные скобки. диспатч? */
-    }, [dispatch]);
-
+    }, []);
     return (
         <section className='wrapper'>
-            {films.map((movie: any) => (
+            {moviesList.map((movie: any) => (
                 <MovieItem {...movie} key={movie.id} />
             ))}
         </section>

@@ -28,6 +28,9 @@
     transition: transform 0.3s;
     cursor: pointer;
 }
+.iconHeartActive {
+    color: red;
+}
 .iconHeart:hover {
     color: tomato;
     transform: scale(1.1);
