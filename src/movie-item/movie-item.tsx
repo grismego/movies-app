@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 // import './movie-item.css';
 import style from './movie-item.module.css';
 import { POSTER_PATH } from './../constants';
 
 import { faHeart, faChevronRight, faHeartbeat, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToFavorite } from '../reducers/actions';
 
 export interface IMoviesItemType {
     id: number;
@@ -24,9 +26,19 @@ export interface IMoviesItemType {
 }
 
 export const MovieItem = (props: IMoviesItemType) => {
-    const { title, overview, duration, likes, poster_path, isFavorite } = props;
+    const { title, overview, duration, likes, poster_path, isFavorite, id } = props;
 
-    // const [isFavorite, setFavorite] = useState(false);
+    const movie = useSelector((state: {
+        page: {
+            movies: ListElement[]
+        }
+    }) => state.page.movies.find((it) => it.id === id));
+
+    const dispatch = useDispatch();
+
+    const changeFavorite = (id: any) => {
+        dispatch(addToFavorite(id))
+    }
 
     return (
         <div className={style.card}>
@@ -41,9 +53,7 @@ export const MovieItem = (props: IMoviesItemType) => {
                 </a>
                 <button
                     className={style.button}
-                    onClick={() => {
-                        // setFavorite(!isFavorite);
-                    }}
+                    onClick={()=> changeFavorite(id)}
                 >
                     <FontAwesomeIcon
                         icon={faHeart}
