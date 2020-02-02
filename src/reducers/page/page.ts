@@ -9,19 +9,13 @@ export function pageReducer(state = intialState, action: Action<ActionsT>) {
         case LOAD_MOVIES:
             return { movies: action.payload };
 
-        case ADD_TO_FAVORITE: 
+        case ADD_TO_FAVORITE:
             return {
-                movies: state.movies.map((movie: ListElement) => {
-                    if (movie.id === action.payload) {
-                        return {
-                            ...movie,
-                            isFavorite: !movie.isFavorite
-                        }
-                    } else {
-                        return movie
-                    }
-                })
-            }
+                ...state,
+                movies: state.movies.map((movie: ListElement) =>
+                    movie.id === action.payload ? { ...movie, isFavorite: !movie.isFavorite } : movie
+                ),
+            };
 
         default:
             return state;
