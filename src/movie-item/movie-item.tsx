@@ -8,29 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToFavorite } from '../reducers/actions';
 
-export interface IMoviesItemType {
-    id: number;
-    title: string;
-    imdb_id: string;
-    overview: string;
-    genres: string[];
-    revenue: number;
-    duration: number;
-    likes: number;
-    vote_average: number;
-    vote_count: number;
-    director?: string;
-    poster_path?: string;
-    release_date: string;
-    isFavorite: boolean;
-}
-
-export const MovieItem = (props: IMoviesItemType) => {
+export const MovieItem = (props: MovieItem) => {
     const { title, poster_path, isFavorite, id } = props;
-
-    // const movie = useSelector((state: { page: { movies: ListElement[] } }) =>
-    //     state.page.movies.find(it => it.id === id)
-    // );
 
     const dispatch = useDispatch();
 
@@ -56,22 +35,6 @@ export const MovieItem = (props: IMoviesItemType) => {
                     />
                 </button>
             </div>
-            {/* <div className={style.footer}>
-                 <h1 className={style.title}>{title}</h1>
-                <p className='movie-card__overview'>{overview}</p>
-                <div className='movie-card__footer'>
-                    <span>{duration} min</span>
-                    <span>likes: {likes}</span>
-                </div> */}
-            {/* <button
-                    className={style.button}
-                    onClick={() => {
-                        setFavorite(!isFavorite);
-                    }}
-                >
-                    <span>{isFavorite ? `Убрать из избранного` : `Добавить в избранное`}</span>
-                </button> 
-            </div>*/}
         </div>
     );
 };

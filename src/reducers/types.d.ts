@@ -1,4 +1,4 @@
-type ListElement = {
+type MovieItem = {
     id: number;
     title: string;
     imdb_id: string;
@@ -15,7 +15,7 @@ type ListElement = {
     isFavorite?: boolean;
 };
 
-type RootStore = { list: ListElement[] };
+type RootStore = { list: MovieItem[] };
 
 type Action<T> = { type: string; payload: T };
 

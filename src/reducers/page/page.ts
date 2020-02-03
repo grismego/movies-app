@@ -12,7 +12,7 @@ export function pageReducer(state = intialState, action: Action<ActionsT>) {
         case ADD_TO_FAVORITE:
             return {
                 ...state,
-                movies: state.movies.map((movie: ListElement) =>
+                movies: state.movies.map((movie: MovieItem) =>
                     movie.id === action.payload ? { ...movie, isFavorite: !movie.isFavorite } : movie
                 ),
             };

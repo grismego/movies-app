@@ -22,20 +22,10 @@ export const MoviesList = () => {
             });
     }, []);
 
-    // const memo = useMemo(() => {
-    //     return <MovieItem />
-    // }, moviesList);
-
-    // const memoTest = useMemo(() => {
-    //     return moviesList.map((movie: any) => <MovieItem {...movie} key={movie.id} />);
-    // }, [moviesList]);
-
-    // const createChild = (movie: IMoviesItemType) => <MovieItem {...movie} key={movie.id} />;
-
     return (
         <>
             <section className='wrapper'>
-                {moviesList.map((movie: any) => (
+                {moviesList.map((movie: MovieItem) => (
                     <MovieItem {...movie} key={movie.id} />
                 ))}
             </section>
