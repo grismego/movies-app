@@ -1,16 +1,10 @@
-.header {
-    /* min-height: 70px; */
-    padding-top: 32px;
-    padding-bottom: 16px;
-    box-shadow: 0 3px 6px 0 rgba(0, 7, 93, 0.16);
-    background-color: #ffffff;
-}
-.wrapper {
+/* .header {
     max-width: 1200px;
     display: flex;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
+    min-height: 70px;
 }
 .list {
     padding: 0;
@@ -27,12 +21,16 @@
     background-color: #0093ff;
     font-family: Pacifico;
     font-size: 28px;
-    line-height: 1.75;
+    line-height: 1.25;
     padding: 0 12px;
     color: white;
-    border-radius: 18px 0 18px 18px;
-}
+    border-radius: 12px 0 12px 12px;
+} */
 
 .search {
     display: flex;
+    border: solid 1px #dedede;
+    background-color: #ffffff;
+    border-radius: 12px 0 12px 12px;
+    flex-basis: 50%;
 }
