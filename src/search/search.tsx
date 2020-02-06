@@ -4,7 +4,7 @@ import Autosuggest from 'react-autosuggest';
 
 import './theme.css';
 
-import { getMoviesTitle, getArraysGenre, getUnicGenre } from '../reducers/page/selectors';
+import { getMoviesTitle } from '../reducers/page/selectors';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { addSuggestion } from '../reducers/actions';
@@ -17,14 +17,9 @@ export const Search = () => {
     const dispatch = useDispatch();
 
     const movies = useSelector((state: { page: { movies: [] } }) => state.page.movies);
-    // console.log(getArraysGenre(movies));
-    console.log(getUnicGenre(movies));
-
     const sugRes = useSelector((state: { page: { suggestions: [] } }) => state.page.suggestions);
 
     const moviesTitle = getMoviesTitle(movies);
-
-    console.log(sugRes);
 
     const escapeRegexCharacters = (str: string) => str.replace(/([ .\w']+?)(\W\d{4}\W?.*)/g, '\\$&');
 

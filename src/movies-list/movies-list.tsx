@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { MovieItem } from '../movie-item/movie-item';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovies } from './../reducers/actions';

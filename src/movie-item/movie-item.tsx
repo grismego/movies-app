@@ -1,11 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 // import './movie-item.css';
 import style from './movie-item.module.css';
 import { POSTER_PATH } from './../constants';
 
 import { faHeart, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToFavorite } from '../reducers/actions';
 
 export const MovieItem = (props: MovieItem) => {
