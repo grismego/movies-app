@@ -15,7 +15,7 @@ type MovieItem = {
     isFavorite?: boolean;
 };
 
-type RootStore = { list: MovieItem[] };
+type RootStore = { movies: MovieItem[] };
 
 type Action<T> = { type: string; payload: T };
 

@@ -1,12 +1,12 @@
 import React from 'react';
 // import './movie-item.css';
 import style from './movie-item.module.css';
-import { POSTER_PATH } from './../constants';
+import { POSTER_PATH } from '../../constants';
 
 import { faHeart, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
-import { addToFavorite } from '../reducers/actions';
+import { addToFavorite } from '../../reducers/actions';
 
 export const MovieItem = (props: MovieItem) => {
     const { title, poster_path, isFavorite, id } = props;

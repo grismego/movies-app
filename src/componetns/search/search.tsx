@@ -4,10 +4,10 @@ import Autosuggest from 'react-autosuggest';
 
 import './theme.css';
 
-import { getMoviesTitle } from '../reducers/page/selectors';
+import { getMoviesTitle } from '../../reducers/page/selectors';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addSuggestion } from '../reducers/actions';
+import { addSuggestion } from '../../reducers/actions';
 
 export const Search = () => {
     const [value, setValue] = useState('');
@@ -31,7 +31,7 @@ export const Search = () => {
         }
 
         const regex = new RegExp(escapedValue, 'i');
-        const suggestions = moviesTitle.filter(language => regex.test(language));
+        const suggestions = moviesTitle.filter(title => regex.test(title));
 
         return suggestions;
     };
@@ -42,15 +42,13 @@ export const Search = () => {
                 suggestions={suggestions}
                 onSuggestionsClearRequested={() => setSuggestions([])}
                 onSuggestionsFetchRequested={({ value }) => {
-                    // dispatch(addSuggestion(value));
                     setValue(value);
                     setSuggestions(getSuggestions(value));
                 }}
-                // alwaysRenderSuggestions={true}
-                // onSuggestionSelected={(_, { suggestionValue }) => console.log('Selected: ' + suggestionValue)}
+                alwaysRenderSuggestions={suggestions ? true : false}
                 getSuggestionValue={suggestion => suggestion}
                 renderSuggestion={suggestion => <span>{suggestion}</span>}
-                onSuggestionSelected={(event, { suggestionValue }) => {
+                onSuggestionSelected={(_, { suggestionValue }) => {
                     dispatch(addSuggestion(suggestionValue));
                 }}
                 inputProps={{
@@ -62,6 +60,7 @@ export const Search = () => {
                 }}
                 highlightFirstSuggestion={true}
             />
+            <button onClick={() => console.log(value)}>Search</button>
         </div>
     );
 };

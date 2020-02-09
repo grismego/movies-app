@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { MovieItem } from '../movie-item/movie-item';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMovies } from './../reducers/actions';
-import { MOVIES_URL } from './../constants';
+import { getMovies } from '../../reducers/actions';
+import { MOVIES_URL } from '../../constants';
 import './movies-list.css';
-import { addingFavoriteKey } from '../reducers/page/selectors';
+import { addingFavoriteKey } from '../../reducers/page/selectors';
 
 export const MoviesList = () => {
     const moviesList = useSelector((state: { page: { movies: [] } }) => state.page.movies);

@@ -1,8 +1,8 @@
 import React from 'react';
 import 'normalize.css';
-import { MoviesList } from './movies-list/movies-list';
-import { Header } from './header/header';
-import { Footer } from './footer/footer';
+import { MoviesList } from './componetns/movies-list/movies-list';
+import { Header } from './componetns/header/header';
+import { Footer } from './componetns/footer/footer';
 import './index.css';
 
 const App: React.FC = () => {
