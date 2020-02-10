@@ -4,10 +4,10 @@ import Autosuggest from 'react-autosuggest';
 
 import './theme.css';
 
-import { getMoviesTitle } from '../../reducers/page/selectors';
+import { getMoviesTitle } from '../../reducers/selectors';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addSuggestion } from '../../reducers/actions';
+import { addSuggestion, addSearch } from '../../reducers/actions';
 
 export const Search = () => {
     const [value, setValue] = useState('');
@@ -16,8 +16,8 @@ export const Search = () => {
 
     const dispatch = useDispatch();
 
-    const movies = useSelector((state: { page: { movies: [] } }) => state.page.movies);
-    const sugRes = useSelector((state: { page: { suggestions: [] } }) => state.page.suggestions);
+    const movies = useSelector((state: RootStore) => state);
+    const sugRes = useSelector((state: RootStore) => state.suggestions);
 
     const moviesTitle = getMoviesTitle(movies);
 
@@ -60,7 +60,14 @@ export const Search = () => {
                 }}
                 highlightFirstSuggestion={true}
             />
-            <button onClick={() => console.log(value)}>Search</button>
+            <button
+                onClick={() => {
+                    dispatch(addSearch(value));
+                    dispatch(addSuggestion(value));
+                }}
+            >
+                Search
+            </button>
         </div>
     );
 };

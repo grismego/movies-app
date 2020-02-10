@@ -1,5 +1,4 @@
 import React from 'react';
-// import './movie-item.css';
 import style from './movie-item.module.css';
 import { POSTER_PATH } from '../../constants';
 
