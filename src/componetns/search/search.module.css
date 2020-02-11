@@ -27,10 +27,17 @@
     border-radius: 12px 0 12px 12px;
 } */
 
-.search {
+.searchWrapper {
     display: flex;
+    /* border: solid 1px #dedede;
+    background-color: #ffffff;
+    border-radius: 12px 0 12px 12px;*/
+    flex-basis: 50%;
+}
+.search {
     border: solid 1px #dedede;
     background-color: #ffffff;
     border-radius: 12px 0 12px 12px;
-    flex-basis: 50%;
+    flex-basis: 100%;
+    display: flex;
 }
