@@ -7,7 +7,7 @@ import {
     FILTER_MOVIES,
 } from './actions-types';
 
-export const getMovies = (newElements: MovieItem[]) => ({
+export const addMovies = (newElements: MovieItem[]) => ({
     type: LOAD_MOVIES,
     payload: newElements,
 });

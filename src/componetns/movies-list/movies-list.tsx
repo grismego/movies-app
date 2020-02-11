@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { MovieItem } from '../movie-item/movie-item';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMovies } from '../../reducers/actions';
+import { addMovies } from '../../reducers/actions';
 import { MOVIES_URL } from '../../constants';
 import { selectDesiredMovies } from '../../reducers/selectors';
 import './movies-list.css';
@@ -9,18 +9,18 @@ import './movies-list.css';
 export const MoviesList = () => {
     const allMovies = useSelector(selectDesiredMovies);
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        fetch(`${MOVIES_URL}/movies`)
-            .then(response => response.json())
-            .then(response => {
-                dispatch(getMovies(response));
-            })
-            .catch(err => {
-                console.error(err);
-            });
-    }, []);
+    // useEffect(() => {
+    //     // fetch(`${MOVIES_URL}/movies`)
+    //     //     .then(response => response.json())
+    //     //     .then(response => {
+    //     //         dispatch(addMovies(response));
+    //     //     })
+    //     //     .catch(err => {
+    //     //         console.error(err);
+    //     //     });
+    // }, []);
 
     return (
         <>
