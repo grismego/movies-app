@@ -1,9 +1,9 @@
 import { addMovies } from './actions';
-import { MOVIES_URL } from './../constants';
 import { all, fork, put, call, delay, takeEvery } from 'redux-saga/effects';
+import { api } from '../api/api';
 
 function fetchData() {
-    return fetch(`${MOVIES_URL}/movies`).then(response => response.json());
+    return api.getData('/v1/movies');
 }
 
 function* appFetchSaga() {

@@ -12,7 +12,7 @@ export const addToFavorite = (state: RootStore, action: { payload: number }) => 
 
 export const addSuggestion = (state: RootStore, action: { payload: string }) => ({
     ...state,
-    suggestions: [...state.suggestions, action.payload],
+    suggestions: [...new Set([...state.suggestions, action.payload])],
 });
 export const addSearchValues = (state: RootStore, action: { payload: string }) => ({
     ...state,

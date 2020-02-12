@@ -8,6 +8,7 @@ import { getMoviesTitle, getUnicGenre } from '../../reducers/selectors';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { addSuggestion, addSearch } from '../../reducers/actions';
+import { Filters } from '../filters/filter';
 
 export const Search = () => {
     const [value, setValue] = useState('');
@@ -21,22 +22,8 @@ export const Search = () => {
 
     const moviesTitle = getMoviesTitle(movies);
 
-    const unicGenres = Array.from(getUnicGenre(movies));
-
-    const escapeRegexCharacters = (str: string) => str.replace(/([ .\w']+?)(\W\d{4}\W?.*)/g, '\\$&');
-
-    const getSuggestions = (value: string) => {
-        const escapedValue = escapeRegexCharacters(value.trim());
-
-        if (escapedValue === '') {
-            return sugRes;
-        }
-
-        const regex = new RegExp(escapedValue, 'i');
-        const suggestions = moviesTitle.filter(title => regex.test(title));
-
-        return suggestions;
-    };
+    const getSuggestions = (value: string) =>
+        value.length >= 1 ? moviesTitle.filter(title => title.toLowerCase().includes(value.toLowerCase())) : sugRes;
 
     return (
         <div className={styles.searchWrapper}>
@@ -77,9 +64,14 @@ export const Search = () => {
                     Search
                 </button>
             </div>
-            {/* {unicGenres.map(genre => {
-                return <li>{genre}</li>;
-            })} */}
+
+            {/* 
+            movies.filter(movie =>
+        genres.some(genreId =>
+            movie.genre.includes(genreId)
+        )
+     ) */}
+            <Filters />
         </div>
     );
 };
