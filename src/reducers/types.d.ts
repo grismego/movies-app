@@ -19,10 +19,11 @@ type RootStore = {
     movies: MovieItem[];
     search: string | any;
     suggestions: string[];
+    selectedFilters: any;
 };
 
 type Action<T> = { type: string; payload: T };
 
-type ActionsT = typeof LOAD_MOVIES | ADD_TO_SUGGESTIONS | ADD_TO_FAVORITE | 'DEFAULT';
+type ActionsT = typeof ADD_TO_FILTER | LOAD_MOVIES | ADD_TO_SUGGESTIONS | ADD_TO_FAVORITE | 'DEFAULT';
 
 type RootReducer<T = ActionsT> = (state: RootState, action: Action<T>) => RootStore;

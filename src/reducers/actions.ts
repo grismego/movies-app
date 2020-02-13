@@ -5,6 +5,7 @@ import {
     ADD_TO_FAVORITE,
     ADD_TO_SUGGESTIONS,
     FILTER_MOVIES,
+    ADD_TO_FILTER,
 } from './actions-types';
 
 export const addMovies = (newElements: MovieItem[]) => ({
@@ -15,6 +16,11 @@ export const addMovies = (newElements: MovieItem[]) => ({
 export const addToFavorite = (id: number) => ({
     type: ADD_TO_FAVORITE,
     payload: id,
+});
+
+export const addToFilter = (filter: any) => ({
+    type: ADD_TO_FILTER,
+    payload: filter,
 });
 
 export const addSuggestion = (value: string) => ({

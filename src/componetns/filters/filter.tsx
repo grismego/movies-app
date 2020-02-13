@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import styles from './filter.module.css';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { addToFilter } from '../../reducers/actions';
 import { getUnicGenre } from '../../reducers/selectors';
 
 export const Filters = () => {
     const movies = useSelector((state: RootStore) => state);
     const unicGenres = Array.from(getUnicGenre(movies));
 
-    const [filters, setActive] = useState<any>({});
+    // const [filters, setActive] = useState<any>({});
+    const dispatch = useDispatch();
 
     return (
         <div className={styles.form}>
@@ -19,7 +20,8 @@ export const Filters = () => {
                             type='checkbox'
                             id={genre}
                             onClick={() => {
-                                setActive({ ...filters, [genre]: !filters[genre] });
+                                dispatch(addToFilter(genre));
+                                // setActive({ ...filters, [genre]: !filters[genre] });
                             }}
                         />
                         {genre}

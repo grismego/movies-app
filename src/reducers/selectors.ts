@@ -9,7 +9,11 @@ export const addingFavoriteKey = createSelector(getMovies, movies =>
 );
 
 const getDesiredMovies = (state: RootStore) => {
-    const { search } = state;
+    const { search, selectedFilters } = state;
+
+    if (selectedFilters.length) {
+        return state.movies.filter(movie => selectedFilters.every((genreId: string) => movie.genres.includes(genreId)));
+    }
 
     if (search === '') {
         return state.movies;
