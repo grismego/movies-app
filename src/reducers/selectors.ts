@@ -20,7 +20,6 @@ const getDesiredMovies = (state: RootStore) => {
     }
 
     if (search.length > 2) {
-        console.log(state);
         return state.movies.filter(movie => (search === '' ? true : movie.title.includes(search)));
     }
 
