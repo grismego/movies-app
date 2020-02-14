@@ -6,11 +6,17 @@ import {
     ADD_TO_SUGGESTIONS,
     FILTER_MOVIES,
     ADD_TO_FILTER,
+    GET_USER,
 } from './actions-types';
 
 export const addMovies = (newElements: MovieItem[]) => ({
     type: LOAD_MOVIES,
     payload: newElements,
+});
+
+export const getUser = (user: any) => ({
+    type: GET_USER,
+    payload: user,
 });
 
 export const addToFavorite = (id: number) => ({

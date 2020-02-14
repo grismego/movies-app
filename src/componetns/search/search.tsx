@@ -7,7 +7,7 @@ import './theme.css';
 import { getMoviesTitle, getUnicGenre } from '../../reducers/selectors';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addSuggestion, addSearch } from '../../reducers/actions';
+import { addSuggestion, addSearch, addToFilter } from '../../reducers/actions';
 import { Filters } from '../filters/filter';
 
 export const Search = () => {
@@ -24,6 +24,8 @@ export const Search = () => {
 
     const getSuggestions = (value: string) =>
         value.length >= 1 ? moviesTitle.filter(title => title.toLowerCase().includes(value.toLowerCase())) : sugRes;
+
+    // const getValue = (value: any) => console.log(value);
 
     return (
         <div className={styles.searchWrapper}>
@@ -64,13 +66,6 @@ export const Search = () => {
                     Search
                 </button>
             </div>
-
-            {/* 
-            movies.filter(movie =>
-        genres.some(genreId =>
-            movie.genre.includes(genreId)
-        )
-     ) */}
             <Filters />
         </div>
     );

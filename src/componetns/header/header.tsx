@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './header.module.css';
 import { Search } from '../search/search';
+import { User } from '../user/user';
 
 export const Header = () => {
     return (
@@ -8,10 +9,12 @@ export const Header = () => {
             <div className={styles.wrapper}>
                 <div className={styles.logo}>MOViER+</div>
                 <Search />
-                <div>
+
+                <User />
+                {/* <div>
                     <img src='' alt='' />
                     <span>User Name</span>
-                </div>
+                </div> */}
                 {/* <div>
                 <ul className={styles.list}>
                     <li>фильтр1</li>

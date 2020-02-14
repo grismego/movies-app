@@ -1,11 +1,12 @@
-import { LOAD_MOVIES, ADD_TO_FAVORITE, ADD_TO_SUGGESTIONS, ADD_SEARCH, ADD_TO_FILTER } from './actions-types';
-import { fetchMovies, addToFavorite, addSuggestion, addSearchValues, addToFilters } from './handlers';
+import { LOAD_MOVIES, ADD_TO_FAVORITE, ADD_TO_SUGGESTIONS, ADD_SEARCH, ADD_TO_FILTER, GET_USER } from './actions-types';
+import { fetchMovies, addToFavorite, addSuggestion, addSearchValues, addToFilters, getUser } from './handlers';
 
 const intialState = {
     movies: [],
     suggestions: [],
     search: '',
     selectedFilters: [],
+    user: null,
 };
 
 const actionHandler = new Map<string, any>([
@@ -14,6 +15,7 @@ const actionHandler = new Map<string, any>([
     [ADD_TO_FAVORITE, addToFavorite],
     [ADD_TO_SUGGESTIONS, addSuggestion],
     [ADD_TO_FILTER, addToFilters],
+    [GET_USER, getUser],
     ['DEFAULT', () => intialState],
 ]);
 

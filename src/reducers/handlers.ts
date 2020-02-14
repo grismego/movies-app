@@ -18,6 +18,11 @@ export const addToFilters = (state: RootStore, action: { payload: any }) => ({
     //     : [...state.selectedFilters, action.payload],
 });
 
+export const getUser = (state: RootStore, action: { payload: any }) => ({
+    ...state,
+    user: action.payload,
+});
+
 export const addSuggestion = (state: RootStore, action: { payload: string }) => ({
     ...state,
     suggestions: [...new Set([...state.suggestions, action.payload])],

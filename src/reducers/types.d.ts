@@ -20,6 +20,7 @@ type RootStore = {
     search: string | any;
     suggestions: string[];
     selectedFilters: any;
+    user: any;
 };
 
 type Action<T> = { type: string; payload: T };
