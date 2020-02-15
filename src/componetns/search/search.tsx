@@ -25,8 +25,6 @@ export const Search = () => {
     const getSuggestions = (value: string) =>
         value.length >= 1 ? moviesTitle.filter(title => title.toLowerCase().includes(value.toLowerCase())) : sugRes;
 
-    // const getValue = (value: any) => console.log(value);
-
     return (
         <div className={styles.searchWrapper}>
             <div className={styles.search}>

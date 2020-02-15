@@ -7,6 +7,8 @@ import {
     FILTER_MOVIES,
     ADD_TO_FILTER,
     GET_USER,
+    LIKE_FILM,
+    UNLIKE_FILM,
 } from './actions-types';
 
 export const addMovies = (newElements: MovieItem[]) => ({
@@ -32,6 +34,16 @@ export const addToFilter = (filter: any) => ({
 export const addSuggestion = (value: string) => ({
     type: ADD_TO_SUGGESTIONS,
     payload: value,
+});
+
+export const addingLike = (id: string) => ({
+    type: LIKE_FILM,
+    payload: id,
+});
+
+export const removingLike = (id: string) => ({
+    type: UNLIKE_FILM,
+    payload: id,
 });
 
 export const addSearch = (value: string) => ({ type: ADD_SEARCH, payload: value });

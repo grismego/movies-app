@@ -3,19 +3,16 @@ export const fetchMovies = (state: RootStore, action: { payload: MovieItem[] }) 
     movies: action.payload,
 });
 
-export const addToFavorite = (state: RootStore, action: { payload: number }) => ({
-    ...state,
-    movies: state.movies.map((movie: MovieItem) =>
-        movie.id === action.payload ? { ...movie, isFavorite: !movie.isFavorite } : movie
-    ),
-});
+// export const addToFavorite = (state: RootStore, action: { payload: number }) => ({
+//     ...state,
+//     movies: state.movies.map((movie: MovieItem) =>
+//         movie.id === action.payload ? { ...movie, isFavorite: !movie.isFavorite } : movie
+//     ),
+// });
 
 export const addToFilters = (state: RootStore, action: { payload: any }) => ({
     ...state,
     selectedFilters: Array.from(action.payload.keys()),
-    // selectedFilters: state.selectedFilters.includes(action.payload)
-    //     ? [...state.selectedFilters.filter((it: any) => it !== action.payload)]
-    //     : [...state.selectedFilters, action.payload],
 });
 
 export const getUser = (state: RootStore, action: { payload: any }) => ({
@@ -31,4 +28,14 @@ export const addSuggestion = (state: RootStore, action: { payload: string }) => 
 export const addSearchValues = (state: RootStore, action: { payload: string }) => ({
     ...state,
     search: action.payload,
+});
+
+export const addingLike = (state: RootStore, action: { payload: number }) => ({
+    ...state,
+    user: { ...state.user, likes: [...state.user.likes, action.payload] },
+});
+
+export const removeLike = (state: RootStore, action: { payload: number }) => ({
+    ...state,
+    user: { ...state.user, likes: state.user.likes.filter((id: number) => id !== action.payload) },
 });

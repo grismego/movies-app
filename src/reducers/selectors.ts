@@ -12,15 +12,17 @@ const getDesiredMovies = (state: RootStore) => {
     const { search, selectedFilters } = state;
 
     if (selectedFilters.length) {
-        return state.movies.filter(movie => selectedFilters.every((genreId: string) => movie.genres.includes(genreId)));
+        return state.movies.filter(movie => selectedFilters.every((genre: string) => movie.genres.includes(genre)));
     }
 
     if (search === '') {
         return state.movies;
     }
 
-    if (search.length > 2) {
-        return state.movies.filter(movie => (search === '' ? true : movie.title.includes(search)));
+    if (search.length > 1) {
+        return state.movies.filter(movie =>
+            search === '' ? true : movie.title.toLowerCase().includes(search.toLowerCase())
+        );
     }
 
     return state.movies;

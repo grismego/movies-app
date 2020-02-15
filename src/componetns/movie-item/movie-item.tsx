@@ -4,17 +4,21 @@ import { BASE_URL } from '../../constants';
 
 import { faHeart, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDispatch } from 'react-redux';
-import { addToFavorite } from '../../reducers/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addingLike, removingLike } from '../../reducers/actions';
 
 export const MovieItem = (props: MovieItem) => {
-    const { title, poster_path, isFavorite, id } = props;
+    const { title, poster_path, id } = props;
 
     const dispatch = useDispatch();
 
     const changeFavorite = (id: any) => {
-        dispatch(addToFavorite(id));
+        likes.indexOf(id) >= 0 ? dispatch(removingLike(id)) : dispatch(addingLike(id));
     };
+
+    const user = useSelector((state: RootStore) => state.user);
+
+    const { likes } = user;
 
     return (
         <div className={style.card}>
@@ -22,7 +26,7 @@ export const MovieItem = (props: MovieItem) => {
 
             <div className={style.footer}>
                 <a href='/' className={style.link}>
-                    More Info{' '}
+                    More Info
                     <span>
                         <FontAwesomeIcon border={false} icon={faChevronRight} />
                     </span>
@@ -30,7 +34,7 @@ export const MovieItem = (props: MovieItem) => {
                 <button className={style.button} onClick={() => changeFavorite(id)}>
                     <FontAwesomeIcon
                         icon={faHeart}
-                        className={style[`${isFavorite ? 'iconHeartActive' : 'iconHeart'}`]}
+                        className={style[`${likes.indexOf(id) >= 0 ? 'iconHeartActive' : 'iconHeart'}`]}
                     />
                 </button>
             </div>

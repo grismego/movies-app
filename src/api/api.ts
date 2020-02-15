@@ -8,7 +8,7 @@ type ApiT = {
 
 type LoadT = {
     url: string;
-    method?: string;
+    method?: any;
     body?: null;
     headers?: Headers;
 };
@@ -33,25 +33,38 @@ export class ApiService {
 
     _load({
         url,
-        method = METHODS.GET,
+        method = null,
         body = null,
         headers = new Headers({
             'Content-Type': 'application/json',
+            Origin: 'http://localhost:3000/',
             Authorization: `Basic ${this._authorization}`,
         }),
     }: LoadT) {
         return fetch(`${this._endPoint}/${url}`, { method, body, headers })
             .then(this._checkStatus)
+            .then(toJSON)
             .catch(err => {
                 throw err;
             });
     }
 
+    removeLike(id: number) {
+        return this._load({
+            url: `movie/${id}/like`,
+            method: METHODS.DELETE,
+        });
+    }
+
     getMovies() {
-        return this._load({ url: `movies` }).then(toJSON);
+        return this._load({ url: `movies`, method: METHODS.GET });
+    }
+
+    addLike(id: number) {
+        return this._load({ url: `movie/${id}/like`, method: METHODS.POST });
     }
 
     getUser() {
-        return this._load({ url: `user/IamAlexey95` }).then(toJSON);
+        return this._load({ url: `user/IamAlexey95`, method: METHODS.GET });
     }
 }

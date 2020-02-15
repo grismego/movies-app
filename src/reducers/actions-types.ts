@@ -6,3 +6,5 @@ export const FILTER_MOVIES = 'FILTER_MOVIES';
 export const ADD_SEARCH = 'ADD_SEARCH';
 export const ADD_TO_FILTER = 'ADD_TO_FILTER';
 export const GET_USER = 'GET_USER';
+export const LIKE_FILM = 'LIKE_FILM';
+export const UNLIKE_FILM = 'UNLIKE_FILM';
