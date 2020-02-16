@@ -4,10 +4,10 @@ import Autosuggest from 'react-autosuggest';
 
 import './theme.css';
 
-import { getMoviesTitle, getUnicGenre } from '../../reducers/selectors';
+import { getMoviesTitle } from '../../reducers/selectors';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addSuggestion, addSearch, addToFilter } from '../../reducers/actions';
+import { addSuggestion, addSearch } from '../../reducers/actions';
 import { Filters } from '../filters/filter';
 
 export const Search = () => {
