@@ -27,7 +27,6 @@ export class ApiService {
     }
 
     _checkStatus(response: any) {
-        // console.log(this._getStore());
         if (response.status >= 200 && response.status < 300) {
             return response;
         } else {
@@ -50,7 +49,6 @@ export class ApiService {
             Authorization: `Basic ${this._authorization || this._getStore()}`,
         }),
     }: LoadT) {
-        console.log(this._getStore(), this._authorization);
         return fetch(`${this._endPoint}/${url}`, { method, body, headers })
             .then(this._checkStatus)
             .then(toJSON)
