@@ -1,9 +1,10 @@
 import { METHODS } from './../constants';
 import { toJSON } from './util';
+import { store } from '..';
 
 type ApiT = {
     endPoint: string;
-    authorization: string;
+    authorization?: any;
 };
 
 type LoadT = {
@@ -17,18 +18,26 @@ export class ApiService {
     private _endPoint: string;
     private _authorization: string;
 
-    constructor({ endPoint, authorization }: ApiT) {
+    constructor({ endPoint, authorization = null }: ApiT) {
         this._endPoint = endPoint;
         this._authorization = authorization;
+        this._getStore = this._getStore.bind(this);
+
         Object.assign(this, { endPoint, authorization });
     }
 
     _checkStatus(response: any) {
+        // console.log(this._getStore());
         if (response.status >= 200 && response.status < 300) {
             return response;
         } else {
             throw new Error(`${response.status}: ${response.statusText}`);
         }
+    }
+    _getStore() {
+        const storage = store.getState().user;
+        const { login, password } = storage;
+        return btoa(`${login}:${password}`);
     }
 
     _load({
@@ -38,9 +47,10 @@ export class ApiService {
         headers = new Headers({
             'Content-Type': 'application/json',
             Origin: 'http://localhost:3000/',
-            Authorization: `Basic ${this._authorization}`,
+            Authorization: `Basic ${this._authorization || this._getStore()}`,
         }),
     }: LoadT) {
+        console.log(this._getStore(), this._authorization);
         return fetch(`${this._endPoint}/${url}`, { method, body, headers })
             .then(this._checkStatus)
             .then(toJSON)

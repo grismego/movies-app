@@ -1,6 +1,5 @@
 import {
     LOAD_MOVIES,
-    ADD_TO_FAVORITE,
     ADD_TO_SUGGESTIONS,
     ADD_SEARCH,
     ADD_TO_FILTER,
@@ -15,7 +14,10 @@ const intialState = {
     suggestions: [],
     search: '',
     selectedFilters: [],
-    user: null,
+    user: {
+        login: 'IamAlexey95',
+        password: 'sf2YCHKifM',
+    },
 };
 
 const actionHandler = new Map<string, any>([

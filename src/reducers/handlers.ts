@@ -3,13 +3,6 @@ export const fetchMovies = (state: RootStore, action: { payload: MovieItem[] }) 
     movies: action.payload,
 });
 
-// export const addToFavorite = (state: RootStore, action: { payload: number }) => ({
-//     ...state,
-//     movies: state.movies.map((movie: MovieItem) =>
-//         movie.id === action.payload ? { ...movie, isFavorite: !movie.isFavorite } : movie
-//     ),
-// });
-
 export const addToFilters = (state: RootStore, action: { payload: any }) => ({
     ...state,
     selectedFilters: Array.from(action.payload.keys()),

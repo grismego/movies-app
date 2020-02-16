@@ -9,19 +9,7 @@ export const Header = () => {
             <div className={styles.wrapper}>
                 <div className={styles.logo}>MOViER+</div>
                 <Search />
-
                 <User />
-                {/* <div>
-                    <img src='' alt='' />
-                    <span>User Name</span>
-                </div> */}
-                {/* <div>
-                <ul className={styles.list}>
-                    <li>фильтр1</li>
-                    <li>фильтр2</li>
-                    <li>фильтр3</li>
-                </ul>
-            </div> */}
             </div>
         </header>
     );
