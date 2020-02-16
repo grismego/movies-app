@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { MovieItem, IMoviesItemType } from '../movie-item/movie-item';
-import './movies-list.css';
+import React, { useEffect, useMemo } from 'react';
+import { MovieItem } from '../movie-item/movie-item';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMovies } from './../reducers/actions';
 import { MOVIES_URL } from './../constants';
-import { generateMoviePoster } from './../utils';
+import './movies-list.css';
+import { addingFavoriteKey } from '../reducers/page/selectors';
 
 export const MoviesList = () => {
-    const [movies, setMovies] = useState<IMoviesItemType[]>([]);
+    const moviesList = useSelector((state: { page: { movies: [] } }) => state.page.movies);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch(MOVIES_URL)
+        fetch(`${MOVIES_URL}/movies`)
             .then(response => response.json())
             .then(response => {
-                setMovies(
-                    response.map((movie: { poster_path: string }) => {
-                        movie[`poster_path`] =
-                            movie[`poster_path`].length > 0 ? movie[`poster_path`] : generateMoviePoster();
-                        return movie;
-                    })
-                );
+                const moviesWithKey = addingFavoriteKey(response);
+                dispatch(getMovies(moviesWithKey));
             })
             .catch(err => {
                 console.error(err);
@@ -25,10 +23,12 @@ export const MoviesList = () => {
     }, []);
 
     return (
-        <section className='wrapper'>
-            {movies.map(movie => (
-                <MovieItem {...movie} key={movie.id} />
-            ))}
-        </section>
+        <>
+            <section className='wrapper'>
+                {moviesList.map((movie: MovieItem) => (
+                    <MovieItem {...movie} key={movie.id} />
+                ))}
+            </section>
+        </>
     );
 };

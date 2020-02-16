@@ -16,3 +16,17 @@
 .list li {
     padding: 0 16px;
 }
+
+.logo {
+    background-color: #0093ff;
+    font-family: Pacifico;
+    font-size: 28px;
+    line-height: 1.25;
+    padding: 0 12px;
+    color: white;
+    border-radius: 12px 0 12px 12px;
+}
+
+.search {
+    display: flex;
+}
