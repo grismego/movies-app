@@ -1,5 +1,5 @@
 import { LOAD_MOVIES, ADD_TO_FAVORITE, ADD_TO_SUGGESTIONS, ADD_SEARCH } from './actions-types';
-import { fetchMovies, addToFavorite, addSuggestion, addSearchValues } from './handlers';
+import { fetchMovies, addToFavorite, addSuggestion, addSearchValues, returnedState } from './handlers';
 
 const intialState = {
     movies: [],
@@ -12,7 +12,7 @@ const actionHandler = new Map<string, any>([
     [ADD_SEARCH, addSearchValues],
     [ADD_TO_FAVORITE, addToFavorite],
     [ADD_TO_SUGGESTIONS, addSuggestion],
-    ['DEFAULT', () => intialState],
+    ['DEFAULT', returnedState],
 ]);
 
 export function rootReducer(state = intialState, action: Action<any>) {

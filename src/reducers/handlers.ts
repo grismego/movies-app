@@ -18,3 +18,5 @@ export const addSearchValues = (state: RootStore, action: { payload: string }) =
     ...state,
     search: action.payload,
 });
+
+export const returnedState = (state: RootStore) => state;
