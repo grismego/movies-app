@@ -10,7 +10,7 @@ export const addToFilters = (state: RootStore, action: { payload: any }) => ({
 
 export const getUser = (state: RootStore, action: { payload: any }) => ({
     ...state,
-    user: action.payload,
+    user: { ...state.user, ...action.payload },
 });
 
 export const addSuggestion = (state: RootStore, action: { payload: string }) => ({
@@ -32,3 +32,5 @@ export const removeLike = (state: RootStore, action: { payload: number }) => ({
     ...state,
     user: { ...state.user, likes: state.user.likes.filter((id: number) => id !== action.payload) },
 });
+
+export const restoreState = (state: RootStore) => state;

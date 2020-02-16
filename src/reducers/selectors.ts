@@ -4,10 +4,6 @@ const getMovies = (state: RootStore) => state.movies;
 
 const getGenres = (state: RootStore) => state.movies.map(movie => movie.genres);
 
-export const addingFavoriteKey = createSelector(getMovies, movies =>
-    movies.map((movie: MovieItem) => ({ ...movie, isFavorite: false }))
-);
-
 const getDesiredMovies = (state: RootStore) => {
     const { search, selectedFilters } = state;
 

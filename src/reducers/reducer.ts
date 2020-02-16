@@ -7,7 +7,16 @@ import {
     LIKE_FILM,
     UNLIKE_FILM,
 } from './actions-types';
-import { fetchMovies, addingLike, addSuggestion, addSearchValues, addToFilters, getUser, removeLike } from './handlers';
+import {
+    fetchMovies,
+    addingLike,
+    addSuggestion,
+    addSearchValues,
+    addToFilters,
+    getUser,
+    removeLike,
+    restoreState,
+} from './handlers';
 
 const intialState = {
     movies: [],
@@ -28,7 +37,7 @@ const actionHandler = new Map<string, any>([
     [GET_USER, getUser],
     [LIKE_FILM, addingLike],
     [UNLIKE_FILM, removeLike],
-    ['DEFAULT', () => intialState],
+    ['DEFAULT', restoreState],
 ]);
 
 export function rootReducer(state = intialState, action: Action<any>) {
