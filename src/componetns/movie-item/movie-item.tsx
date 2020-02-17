@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './movie-item.module.css';
-import { BASE_URL } from '../../constants';
+import { POSTER_PATH } from '../../constants';
 
 import { faHeart, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,7 +22,7 @@ export const MovieItem = (props: MovieItem) => {
 
     return (
         <div className={style.card}>
-            <img src={`${BASE_URL}/${poster_path}`} alt={title} className={style.img} />
+            <img src={`${POSTER_PATH}${poster_path}`} alt={title} className={style.img} />
 
             <div className={style.footer}>
                 <a href='/' className={style.link}>
