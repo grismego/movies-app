@@ -5,6 +5,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
 }

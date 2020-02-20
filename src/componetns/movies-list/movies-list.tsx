@@ -8,9 +8,7 @@ export const MoviesList = () => {
     const allMovies = useSelector(selectDesiredMovies);
     return (
         <section className='wrapper'>
-            {allMovies.map((movie: MovieItem) => (
-                <MovieItem {...movie} key={movie.id} />
-            ))}
+            {allMovies && allMovies.map((movie: MovieItem) => <MovieItem {...movie} key={movie.id} />)}
         </section>
     );
 };

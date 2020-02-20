@@ -6,7 +6,8 @@ import { faHeart, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
 import { addingLike, removingLike } from '../../reducers/actions';
-
+import { Link } from 'react-router-dom';
+import { Spinner } from '../spinner/spinner';
 export const MovieItem = (props: MovieItem) => {
     const { title, poster_path, id } = props;
 
@@ -25,12 +26,12 @@ export const MovieItem = (props: MovieItem) => {
             <img src={`${POSTER_PATH}${poster_path}`} alt={title} className={style.img} />
 
             <div className={style.footer}>
-                <a href='/' className={style.link}>
+                <Link to={`/movie/${id}`} className={style.link}>
                     More Info
                     <span>
                         <FontAwesomeIcon border={false} icon={faChevronRight} />
                     </span>
-                </a>
+                </Link>
                 <button className={style.button} onClick={() => changeFavorite(id)}>
                     <FontAwesomeIcon
                         icon={faHeart}

@@ -8,10 +8,16 @@ export const addToFilters = (state: RootStore, action: { payload: any }) => ({
     selectedFilters: Array.from(action.payload.keys()),
 });
 
-export const getUser = (state: RootStore, action: { payload: any }) => ({
-    ...state,
-    user: { ...state.user, ...action.payload },
-});
+// export const getUser = (state: RootStore, action: { payload: any }) => ({
+//     ...state,
+//     user: { ...state.user, ...action.payload },
+// });
+
+export const getUser = (state: RootStore, action: { payload: any }) => {
+    return Object.assign({}, state, {
+        user: { ...state.user, ...action.payload },
+    });
+};
 
 export const addSuggestion = (state: RootStore, action: { payload: string }) => ({
     ...state,

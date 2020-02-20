@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './user.module.css';
+import { Link } from 'react-router-dom';
 
 export const User = () => {
     const user = useSelector((state: RootStore) => state.user);
@@ -12,7 +13,9 @@ export const User = () => {
                 alt='avatar'
                 className={styles.avatar}
             />
-            <span className={styles.name}>{user && user.login}</span>
+            <Link to='/user'>
+                <span className={styles.name}>{user && user.login}</span>
+            </Link>
         </div>
     );
 };
