@@ -17,11 +17,13 @@ type LoadT = {
 export class ApiService {
     private _endPoint: string;
     private _authorization: string;
+    private _login: null | string;
 
     constructor({ endPoint, authorization = null }: ApiT) {
         this._endPoint = endPoint;
         this._authorization = authorization;
         this._getStore = this._getStore.bind(this);
+        this._login = null;
 
         Object.assign(this, { endPoint, authorization });
     }
@@ -36,6 +38,7 @@ export class ApiService {
     _getStore() {
         const storage = store.getState().user;
         const { login, password } = storage;
+        this._login = login;
         return btoa(`${login}:${password}`);
     }
 
@@ -73,6 +76,6 @@ export class ApiService {
     }
 
     getUser() {
-        return this._load({ url: `user/IamAlexey95`, method: METHODS.GET });
+        return this._load({ url: `user/${this._login}`, method: METHODS.GET });
     }
 }

@@ -8,3 +8,6 @@ export const ADD_TO_FILTER = 'ADD_TO_FILTER';
 export const GET_USER = 'GET_USER';
 export const LIKE_FILM = 'LIKE_FILM';
 export const UNLIKE_FILM = 'UNLIKE_FILM';
+export const LOG_IN = 'LOG_IN';
+export const LOG_IN_SUCCES = 'LOG_IN_SUCCES';
+export const LOG_IN_FAILED = 'LOG_IN_FAILED';

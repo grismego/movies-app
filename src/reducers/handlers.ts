@@ -8,11 +8,6 @@ export const addToFilters = (state: RootStore, action: { payload: any }) => ({
     selectedFilters: Array.from(action.payload.keys()),
 });
 
-// export const getUser = (state: RootStore, action: { payload: any }) => ({
-//     ...state,
-//     user: { ...state.user, ...action.payload },
-// });
-
 export const getUser = (state: RootStore, action: { payload: any }) => {
     return Object.assign({}, state, {
         user: { ...state.user, ...action.payload },
@@ -37,6 +32,31 @@ export const addingLike = (state: RootStore, action: { payload: number }) => ({
 export const removeLike = (state: RootStore, action: { payload: number }) => ({
     ...state,
     user: { ...state.user, likes: state.user.likes.filter((id: number) => id !== action.payload) },
+});
+
+export const logIn = (state: RootStore, action: { login: string; password: string }) => ({
+    ...state,
+    user: {
+        ...state.user,
+        login: action.login,
+        password: action.password,
+    },
+});
+
+export const logInSucces = (state: RootStore, action: { payload: number }) => ({
+    ...state,
+    user: {
+        ...state.user,
+        isAuth: true,
+    },
+});
+
+export const logInFailed = (state: RootStore, action: { payload: number }) => ({
+    ...state,
+    user: {
+        ...state.user,
+        isAuth: false,
+    },
 });
 
 export const restoreState = (state: RootStore) => state;

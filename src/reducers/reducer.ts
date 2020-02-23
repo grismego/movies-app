@@ -6,6 +6,9 @@ import {
     GET_USER,
     LIKE_FILM,
     UNLIKE_FILM,
+    LOG_IN,
+    LOG_IN_FAILED,
+    LOG_IN_SUCCES,
 } from './actions-types';
 import {
     fetchMovies,
@@ -16,6 +19,9 @@ import {
     getUser,
     removeLike,
     restoreState,
+    logIn,
+    logInFailed,
+    logInSucces,
 } from './handlers';
 
 const intialState = {
@@ -24,6 +30,7 @@ const intialState = {
     search: '',
     selectedFilters: [],
     user: {
+        isAuth: Boolean(localStorage.getItem('isAuth')),
         login: 'IamAlexey95',
         password: 'sf2YCHKifM',
     },
@@ -37,6 +44,9 @@ const actionHandler = new Map<string, any>([
     [GET_USER, getUser],
     [LIKE_FILM, addingLike],
     [UNLIKE_FILM, removeLike],
+    [LOG_IN_SUCCES, logInSucces],
+    [LOG_IN_FAILED, logInFailed],
+    [LOG_IN, logIn],
     ['DEFAULT', restoreState],
 ]);
 

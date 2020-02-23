@@ -9,6 +9,9 @@ import {
     GET_USER,
     LIKE_FILM,
     UNLIKE_FILM,
+    LOG_IN_SUCCES,
+    LOG_IN_FAILED,
+    LOG_IN,
 } from './actions-types';
 
 export const addMovies = (newElements: MovieItem[]) => ({
@@ -45,6 +48,16 @@ export const removingLike = (id: string) => ({
     type: UNLIKE_FILM,
     payload: id,
 });
+
+export const logIn = (login: string, password: string) => ({
+    type: LOG_IN,
+    login,
+    password,
+});
+
+export const logInSucces = () => ({ type: LOG_IN_SUCCES });
+
+export const logInFailed = () => ({ type: LOG_IN_FAILED });
 
 export const addSearch = (value: string) => ({ type: ADD_SEARCH, payload: value });
 

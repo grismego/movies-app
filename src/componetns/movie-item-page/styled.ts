@@ -7,6 +7,7 @@ export const Title = styled.h1`
     font-stretch: normal;
     font-style: normal;
     line-height: 1.29;
+    margin-top: 0;
 `;
 
 export const ImgWrapper = styled.div`

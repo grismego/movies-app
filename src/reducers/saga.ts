@@ -1,15 +1,11 @@
-// import { store } from './../index';
-import { LIKE_FILM, UNLIKE_FILM } from './actions-types';
-import { addMovies, getUser } from './actions';
-import { all, fork, put, call, takeLatest, delay, takeEvery } from 'redux-saga/effects';
+import { LIKE_FILM, UNLIKE_FILM, LOG_IN } from './actions-types';
+import { addMovies, getUser, logInSucces, logInFailed } from './actions';
+import { all, fork, put, call, takeEvery } from 'redux-saga/effects';
 import { ApiService } from '../api/api';
 import { BASE_URL } from '../constants';
 
-// const AUTHORIZATION = `SWFtQWxleGV5OTU6c2YyWUNIS2lmTQ==`;
-
 const api = new ApiService({
     endPoint: BASE_URL,
-    // authorization: AUTHORIZATION,
 });
 
 function fetchData() {
@@ -38,13 +34,29 @@ function* UnLike(action: any) {
 
 function* appFetchSaga() {
     const data = yield call(fetchData);
-    const user = yield call(fetchUser);
-    yield put(getUser(user));
     yield put(addMovies(data));
+    if (localStorage.getItem('isAuth')) {
+        const user = yield call(fetchUser);
+        yield put(getUser(user));
+    }
+}
+
+function* signIn() {
+    try {
+        const user = yield call(fetchUser);
+        yield put(getUser(user));
+        yield put(logInSucces());
+        localStorage.setItem('isAuth', 'true');
+    } catch (e) {
+        yield put(logInFailed());
+    }
 }
 
 export function* rootSaga() {
     yield takeEvery(LIKE_FILM, Like);
     yield takeEvery(UNLIKE_FILM, UnLike);
+
+    yield takeEvery(LOG_IN, signIn);
+
     yield all([fork(appFetchSaga)]);
 }

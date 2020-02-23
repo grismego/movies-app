@@ -1,9 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Modal, Title, WrappedContent, Text, Input, WrappedFooter, Link, Button } from './styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn } from '../../reducers/actions';
+import { useHistory, Redirect } from 'react-router-dom';
 
-export const SignIn = () => {
+export const SignIn = (props: any) => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+
+    const isAuth = useSelector((state: RootStore) => state.user.isAuth);
+
+    const dispatch = useDispatch();
+
+    let history = useHistory();
+
+    useEffect(() => {
+        if (isAuth) {
+            history.push(`/user`);
+        }
+    }, [isAuth]);
 
     return (
         <Container>
@@ -17,18 +32,22 @@ export const SignIn = () => {
                         placeholder='UserName'
                         onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setLogin(evt.target.value)}
                     />
+                    <p>IamAlexey95</p>
                     <Input
                         type='password'
                         value={password}
                         placeholder='Password'
                         onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setPassword(evt.target.value)}
                     />
+                    <p>sf2YCHKifM</p>
                 </WrappedContent>
                 <WrappedFooter>
                     <Link href={`#`}>Oops, I forget my password!</Link>
                     <div>
-                        <Link href={`#`}>Cancel</Link>
-                        <Button>Sign In</Button>
+                        <Link href={`#`} onClick={() => history.push(`/`)}>
+                            Cancel
+                        </Link>
+                        <Button onClick={() => dispatch(logIn(login, password))}>Sign In</Button>
                     </div>
                 </WrappedFooter>
             </Modal>

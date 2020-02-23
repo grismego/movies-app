@@ -9,7 +9,7 @@ export const User = () => {
     return (
         <div className={styles.container}>
             <img
-                src={`https://devlab.website//upload/movie/student13_cd6bfcb12aacab488ef2baa616474e9a.jpg`}
+                src={`https://devlab.website/upload/movie/student13_cd6bfcb12aacab488ef2baa616474e9a.jpg`}
                 alt='avatar'
                 className={styles.avatar}
             />
