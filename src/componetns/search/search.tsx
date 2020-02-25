@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './search.module.css';
 import Autosuggest from 'react-autosuggest';
+import { ButtonElem } from '../button/button';
 
 import './theme.css';
 
@@ -55,14 +56,23 @@ export const Search = () => {
                     }}
                     highlightFirstSuggestion={true}
                 />
-                <button
+                {/* <button
                     onClick={() => {
                         dispatch(addSearch(value));
                         dispatch(addSuggestion(value));
                     }}
                 >
                     Search
-                </button>
+                </button> */}
+                <ButtonElem
+                    primary
+                    onClick={() => {
+                        dispatch(addSearch(value));
+                        dispatch(addSuggestion(value));
+                    }}
+                >
+                    Search
+                </ButtonElem>
             </div>
             <Filters />
         </div>

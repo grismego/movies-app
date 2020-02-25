@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 export const Header = () => {
-    const user = useSelector((state: RootStore) => state.user);
+    const isAuth = useSelector((state: RootStore) => state.isAuth);
 
     return (
         <header className={styles.header}>
@@ -15,7 +15,7 @@ export const Header = () => {
                     MOViER+
                 </Link>
                 <Search />
-                {user.isAuth ? <User /> : <Link to='/sign-in'>Sign in</Link>}
+                {isAuth ? <User /> : <Link to='/sign-in'>Sign in</Link>}
             </div>
         </header>
     );

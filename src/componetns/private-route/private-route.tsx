@@ -9,5 +9,9 @@ export const PrivateRouter = ({
     SuccessRoute,
     FailureRoute,
 }: PrivateRoutePropsT) => {
-    return <Route path={path}>{predicate(valueToBeChecked) ? <SuccessRoute /> : <FailureRoute />}</Route>;
+    return (
+        <Route exact path={path}>
+            {predicate(valueToBeChecked) ? <SuccessRoute /> : <FailureRoute />}
+        </Route>
+    );
 };

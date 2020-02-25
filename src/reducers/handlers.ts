@@ -45,18 +45,12 @@ export const logIn = (state: RootStore, action: { login: string; password: strin
 
 export const logInSucces = (state: RootStore, action: { payload: number }) => ({
     ...state,
-    user: {
-        ...state.user,
-        isAuth: true,
-    },
+    isAuth: true,
 });
 
 export const logInFailed = (state: RootStore, action: { payload: number }) => ({
     ...state,
-    user: {
-        ...state.user,
-        isAuth: false,
-    },
+    isAuth: false,
 });
 
 export const restoreState = (state: RootStore) => state;

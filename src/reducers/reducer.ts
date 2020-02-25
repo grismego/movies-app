@@ -29,8 +29,8 @@ const intialState = {
     suggestions: [],
     search: '',
     selectedFilters: [],
+    isAuth: Boolean(localStorage.getItem('isAuth')),
     user: {
-        isAuth: Boolean(localStorage.getItem('isAuth')),
         login: 'IamAlexey95',
         password: 'sf2YCHKifM',
     },

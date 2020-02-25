@@ -15,6 +15,7 @@ import { NotFound } from './componetns/not-found/not-found';
 import { PrivateRouter } from './componetns/private-route/private-route';
 
 const App: React.FC = () => {
+    console.log(localStorage.getItem('isAuth'));
     return (
         <Router>
             <Header />
@@ -22,14 +23,13 @@ const App: React.FC = () => {
                 <Switch>
                     <Route exact path='/' component={MoviesList} />
                     <Route exact path='/movie/:id' component={MovieItemPage} />
-                    <Route exact path='/user' component={UserPage} />
                     <Route path='/sign-in' component={SignIn} />
                     <PrivateRouter
                         path='/user'
-                        predicate={arg => arg === 'isAuth'}
+                        predicate={arg => arg}
                         valueToBeChecked={localStorage.getItem('isAuth')}
                         SuccessRoute={() => <UserPage />}
-                        FailureRoute={() => <SignIn />}
+                        FailureRoute={() => <NotFound />}
                     />
                     <Route path='*' component={NotFound}></Route>
                 </Switch>
