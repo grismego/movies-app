@@ -15,10 +15,14 @@ type MovieItem = {
     isFavorite?: boolean;
 };
 
-type RootStore = { list: MovieItem[] };
+type RootStore = {
+    movies: MovieItem[];
+    search: string | any;
+    suggestions: string[];
+};
 
 type Action<T> = { type: string; payload: T };
 
-type ActionsT = typeof GET_MOVIES | 'DEFAULT';
+type ActionsT = typeof LOAD_MOVIES | ADD_TO_SUGGESTIONS | ADD_TO_FAVORITE | 'DEFAULT';
 
-type RootReducer<T = ActionsT> = (state: RootStore, action: Action<T>) => RootStore;
+type RootReducer<T = ActionsT> = (state: RootState, action: Action<T>) => RootStore;
