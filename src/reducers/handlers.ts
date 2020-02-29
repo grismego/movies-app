@@ -24,7 +24,6 @@ export const addSearchValues = (state: RootStore, action: { payload: string }) =
     search: action.payload,
 });
 
-<<<<<<< HEAD
 export const addingLike = (state: RootStore, action: { payload: number }) => ({
     ...state,
     user: { ...state.user, likes: [...state.user.likes, action.payload] },
@@ -71,6 +70,3 @@ export const logInFailed = (state: RootStore, action: { payload: number }) => ({
 });
 
 export const restoreState = (state: RootStore) => state;
-=======
-export const returnedState = (state: RootStore) => state;
->>>>>>> fee301ab9010759a7f6f1de677acea716edd3861
