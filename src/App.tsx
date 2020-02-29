@@ -10,12 +10,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './index.css';
 import { MovieItemPage } from './componetns/movie-item-page/movie-item-page';
 import { BaseLayout } from './componetns/layout/layout';
-import { SignIn } from './componetns/sign-in/sign-in';
+import { Login } from './componetns/login/login';
 import { NotFound } from './componetns/not-found/not-found';
 import { PrivateRouter } from './componetns/private-route/private-route';
 
 const App: React.FC = () => {
-    console.log(localStorage.getItem('isAuth'));
     return (
         <Router>
             <Header />
@@ -23,7 +22,7 @@ const App: React.FC = () => {
                 <Switch>
                     <Route exact path='/' component={MoviesList} />
                     <Route exact path='/movie/:id' component={MovieItemPage} />
-                    <Route path='/sign-in' component={SignIn} />
+                    <Route path='/login' component={Login} />
                     <PrivateRouter
                         path='/user'
                         predicate={arg => arg}

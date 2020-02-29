@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const WrapperImg = styled.div`
     display: flex;
+    flex-direction: column;
     border-radius: 16px;
 `;
 export const Img = styled.img`
@@ -9,8 +10,28 @@ export const Img = styled.img`
     height: 272px;
 `;
 
-export const Container = styled.div`
+export const InputFile = styled.input`
+    font-size: 0;
+    width: 0;
+    height: 0;
+    display: none;
+`;
+export const LabelInputFile = styled.label`
+    font-size: 16px;
     display: flex;
+    border-radius: 0 0 16px 16px;
+    background-color: #0093ff;
+    color: white;
+    padding: 8px 18px;
+    text-align: center;
+    cursor: pointer;
+`;
+
+export const Container = styled.div`
+    form {
+        display: flex;
+        flex-wrap: wrap;
+    }
 `;
 
 export const UserInfo = styled.div`
@@ -68,4 +89,16 @@ export const ButtonBlock = styled.div`
     button ~ button {
         margin-left: 20px;
     }
+`;
+
+export const List = styled.div`
+    display: grid;
+    max-width: 1200px;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+`;
+
+export const Title = styled.h3`
+    width: 100%;
+    margin-top: 24px;
 `;

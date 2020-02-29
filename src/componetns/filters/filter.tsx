@@ -29,6 +29,7 @@ export const Filters = () => {
                     </label>
                 );
             })}
+
             <ButtonElem
                 small
                 primary

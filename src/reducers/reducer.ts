@@ -9,6 +9,7 @@ import {
     LOG_IN,
     LOG_IN_FAILED,
     LOG_IN_SUCCES,
+    ADD_USER_INFO,
 } from './actions-types';
 import {
     fetchMovies,
@@ -22,6 +23,7 @@ import {
     logIn,
     logInFailed,
     logInSucces,
+    addUserInfo,
 } from './handlers';
 
 const intialState = {
@@ -47,6 +49,7 @@ const actionHandler = new Map<string, any>([
     [LOG_IN_SUCCES, logInSucces],
     [LOG_IN_FAILED, logInFailed],
     [LOG_IN, logIn],
+    [ADD_USER_INFO, addUserInfo],
     ['DEFAULT', restoreState],
 ]);
 

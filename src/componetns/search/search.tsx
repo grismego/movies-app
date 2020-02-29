@@ -56,15 +56,8 @@ export const Search = () => {
                     }}
                     highlightFirstSuggestion={true}
                 />
-                {/* <button
-                    onClick={() => {
-                        dispatch(addSearch(value));
-                        dispatch(addSuggestion(value));
-                    }}
-                >
-                    Search
-                </button> */}
                 <ButtonElem
+                    className={styles.button}
                     primary
                     onClick={() => {
                         dispatch(addSearch(value));

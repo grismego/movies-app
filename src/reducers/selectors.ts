@@ -4,6 +4,8 @@ const getMovies = (state: RootStore) => state.movies;
 
 const getGenres = (state: RootStore) => state.movies.map(movie => movie.genres);
 
+const getUser = (state: RootStore) => state.user;
+
 const getDesiredMovies = (state: RootStore) => {
     const { search, selectedFilters } = state;
 
@@ -25,6 +27,10 @@ const getDesiredMovies = (state: RootStore) => {
 };
 
 export const selectDesiredMovies = createSelector(getDesiredMovies, movies => movies);
+
+export const selectFavoriteMovies = createSelector(getMovies, getUser, (movies, user) =>
+    movies.filter(movie => user.likes && user.likes.includes(Number(movie.id)))
+);
 
 export const getUnicGenre = createSelector(getGenres, genres => new Set(genres.flat()));
 

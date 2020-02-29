@@ -6,6 +6,7 @@ import './movies-list.css';
 
 export const MoviesList = () => {
     const allMovies = useSelector(selectDesiredMovies);
+
     return (
         <section className='wrapper'>
             {allMovies && allMovies.map((movie: MovieItem) => <MovieItem {...movie} key={movie.id} />)}

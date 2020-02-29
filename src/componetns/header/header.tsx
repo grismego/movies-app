@@ -15,7 +15,7 @@ export const Header = () => {
                     MOViER+
                 </Link>
                 <Search />
-                {isAuth ? <User /> : <Link to='/sign-in'>Sign in</Link>}
+                {isAuth ? <User /> : <Link to='/login'>Log in</Link>}
             </div>
         </header>
     );

@@ -10,7 +10,7 @@ type ApiT = {
 type LoadT = {
     url: string;
     method?: any;
-    body?: null;
+    body?: null | any;
     headers?: Headers;
 };
 
@@ -47,7 +47,6 @@ export class ApiService {
         method = null,
         body = null,
         headers = new Headers({
-            'Content-Type': 'application/json',
             Origin: 'http://localhost:3000/',
             Authorization: `Basic ${this._authorization || this._getStore()}`,
         }),
@@ -65,6 +64,10 @@ export class ApiService {
             url: `movie/${id}/like`,
             method: METHODS.DELETE,
         });
+    }
+
+    sendingUserInfo(formData: any) {
+        return this._load({ url: `user/${this._login}`, method: METHODS.PUT, body: formData });
     }
 
     getMovies() {

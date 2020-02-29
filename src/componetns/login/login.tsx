@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Modal, Title, WrappedContent, Text, Input, WrappedFooter, Link, Button } from './styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from '../../reducers/actions';
 import { useHistory } from 'react-router-dom';
 
-export const SignIn = (props: any) => {
+export const Login = (props: any) => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
 
     const dispatch = useDispatch();
 
     let history = useHistory();
+
+    const isAuth = useSelector((state: RootStore) => state.isAuth);
+
+    useEffect(() => {
+        isAuth && history.push('/user');
+    }, [isAuth]);
 
     return (
         <Container>

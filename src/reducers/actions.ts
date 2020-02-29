@@ -12,6 +12,7 @@ import {
     LOG_IN_SUCCES,
     LOG_IN_FAILED,
     LOG_IN,
+    ADD_USER_INFO,
 } from './actions-types';
 
 export const addMovies = (newElements: MovieItem[]) => ({
@@ -54,6 +55,13 @@ export const logIn = (login: string, password: string) => ({
     login,
     password,
 });
+
+export const addingUserInfo = (formData: any) => {
+    return {
+        type: ADD_USER_INFO,
+        formData,
+    };
+};
 
 export const logInSucces = () => ({ type: LOG_IN_SUCCES });
 
