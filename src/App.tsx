@@ -1,18 +1,18 @@
 import React from 'react';
 import 'normalize.css';
-import { MoviesList } from './componetns/movies-list/movies-list';
-import { Header } from './componetns/header/header';
-import { Footer } from './componetns/footer/footer';
-import { UserPage } from './componetns/user-page/user-page';
+import { MoviesList } from './components/movies-list/movies-list';
+import { Header } from './components/header/header';
+import { Footer } from './components/footer/footer';
+import { UserPage } from './components/user-page/user-page';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './index.css';
-import { MovieItemPage } from './componetns/movie-item-page/movie-item-page';
-import { BaseLayout } from './componetns/layout/layout';
-import { Login } from './componetns/login/login';
-import { NotFound } from './componetns/not-found/not-found';
-import { PrivateRouter } from './componetns/private-route/private-route';
+import { MovieItemPage } from './components/movie-item-page/movie-item-page';
+import { BaseLayout } from './components/layout/layout';
+import { Login } from './components/login/login';
+import { NotFound } from './components/not-found/not-found';
+import { PrivateRouter } from './components/private-route/private-route';
 
 const App: React.FC = () => {
     return (
