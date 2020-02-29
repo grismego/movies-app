@@ -3,4 +3,5 @@
     margin: 32px auto;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
