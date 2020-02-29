@@ -1,37 +1,5 @@
-/* .header {
-    max-width: 1200px;
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 70px;
-}
-.list {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    list-style: none;
-}
-
-.list li {
-    padding: 0 16px;
-}
-
-.logo {
-    background-color: #0093ff;
-    font-family: Pacifico;
-    font-size: 28px;
-    line-height: 1.25;
-    padding: 0 12px;
-    color: white;
-    border-radius: 12px 0 12px 12px;
-} */
-
 .searchWrapper {
     display: flex;
-    /* border: solid 1px #dedede;
-    background-color: #ffffff;
-    border-radius: 12px 0 12px 12px;*/
     flex-basis: 50%;
     flex-wrap: wrap;
 }

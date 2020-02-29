@@ -43,16 +43,6 @@ export const logIn = (state: RootStore, action: { login: string; password: strin
     },
 });
 
-// export const addUserInfo = (state: RootStore, action: { bio: string; name: string; avatar: string }) => ({
-//     ...state,
-//     user: {
-//         ...state.user,
-//         bio: action.bio,
-//         name: action.name,
-//         avatar: action.avatar,
-//     },
-// });
-
 export const addUserInfo = (state: RootStore, action: { bio: string; name: string; avatar: string }) => {
     return {
         ...state,

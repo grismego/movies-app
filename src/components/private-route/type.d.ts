@@ -14,14 +14,3 @@ type PrivateRoutePropsT2 = {
     rest?: any;
     path: any;
 };
-
-// export const PrivateRouter2 = ({
-//     children, ...rest, predicate,
-//     valueToBeChecked
-// }) => {
-//     return (
-//         <Route {...rest}
-//             render={({location}) => predicate(valueToBeChecked) ? children : <Redirect to={redirectPath}/> }
-//         />
-//     )
-// }

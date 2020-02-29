@@ -36,21 +36,6 @@ export const UserPage = (props: any) => {
         setUserBio(bio);
     }, [bio, name, avatar]);
 
-    // const [userInfo, setUserInfo] = useState({
-    //     bio,
-    //     name,
-    //     avatar
-    // })
-
-    // const [state, setState] = useState(() => {
-    //     const initialState = someExpensiveComputation(props);
-    //     return initialState;
-    //   });
-
-    // const [userName, setUserName] = useState(() => {
-    //     return name;
-    // });
-
     const movies = useSelector(selectFavoriteMovies);
 
     const handleSubmit = (event: any) => {

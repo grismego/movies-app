@@ -74,7 +74,6 @@ export const UserBio = styled.div`
         padding: 10px 7px;
         color: #000;
         resize: none;
-        /* width: 560px; */
         flex-grow: 1;
         border-radius: 8px;
         border: solid 1px #dedede;

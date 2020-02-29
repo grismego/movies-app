@@ -1,6 +1,6 @@
 import { METHODS } from './../constants';
 import { toJSON } from './util';
-import { store } from '..';
+import { store } from '../index';
 
 type ApiT = {
     endPoint: string;
