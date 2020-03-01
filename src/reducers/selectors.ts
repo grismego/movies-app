@@ -4,20 +4,21 @@ const getMovies = (state: RootStore) => state.movies;
 
 const getGenres = (state: RootStore) => state.movies.map(movie => movie.genres);
 
-export const addingFavoriteKey = createSelector(getMovies, movies =>
-    movies.map((movie: MovieItem) => ({ ...movie, isFavorite: false }))
-);
-
 const getDesiredMovies = (state: RootStore) => {
-    const { search } = state;
+    const { search, selectedFilters } = state;
+
+    if (selectedFilters.length) {
+        return state.movies.filter(movie => selectedFilters.every((genre: string) => movie.genres.includes(genre)));
+    }
 
     if (search === '') {
         return state.movies;
     }
 
-    if (search.length > 2) {
-        console.log(state);
-        return state.movies.filter(movie => (search === '' ? true : movie.title.includes(search)));
+    if (search.length > 1) {
+        return state.movies.filter(movie =>
+            search === '' ? true : movie.title.toLowerCase().includes(search.toLowerCase())
+        );
     }
 
     return state.movies;

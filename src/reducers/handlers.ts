@@ -3,20 +3,34 @@ export const fetchMovies = (state: RootStore, action: { payload: MovieItem[] }) 
     movies: action.payload,
 });
 
-export const addToFavorite = (state: RootStore, action: { payload: number }) => ({
+export const addToFilters = (state: RootStore, action: { payload: any }) => ({
     ...state,
-    movies: state.movies.map((movie: MovieItem) =>
-        movie.id === action.payload ? { ...movie, isFavorite: !movie.isFavorite } : movie
-    ),
+    selectedFilters: Array.from(action.payload.keys()),
+});
+
+export const getUser = (state: RootStore, action: { payload: any }) => ({
+    ...state,
+    user: { ...state.user, ...action.payload },
 });
 
 export const addSuggestion = (state: RootStore, action: { payload: string }) => ({
     ...state,
-    suggestions: [...state.suggestions, action.payload],
+    suggestions: [...new Set([...state.suggestions, action.payload])],
 });
+
 export const addSearchValues = (state: RootStore, action: { payload: string }) => ({
     ...state,
     search: action.payload,
 });
 
-export const returnedState = (state: RootStore) => state;
+export const addingLike = (state: RootStore, action: { payload: number }) => ({
+    ...state,
+    user: { ...state.user, likes: [...state.user.likes, action.payload] },
+});
+
+export const removeLike = (state: RootStore, action: { payload: number }) => ({
+    ...state,
+    user: { ...state.user, likes: state.user.likes.filter((id: number) => id !== action.payload) },
+});
+
+export const restoreState = (state: RootStore) => state;
