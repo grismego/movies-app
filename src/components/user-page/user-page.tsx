@@ -21,7 +21,7 @@ import {
 import placeholder from './placeholder.png';
 import { MovieItem } from '../movie-item/movie-item';
 
-export const UserPage = (props: any) => {
+export const UserPage = () => {
     const user = useSelector((state: RootStore) => state.user);
 
     const dispatch = useDispatch();
@@ -31,9 +31,14 @@ export const UserPage = (props: any) => {
     const [userName, setUserName] = useState('');
     const [userBio, setUserBio] = useState('');
 
+    const [avatarImg, setAvatar] = useState(``);
+
+    const refImg = useRef<any>();
+
     useEffect(() => {
         setUserName(name);
         setUserBio(bio);
+        setAvatar(avatar);
     }, [bio, name, avatar]);
 
     const movies = useSelector(selectFavoriteMovies);
@@ -44,6 +49,17 @@ export const UserPage = (props: any) => {
         dispatch(addingUserInfo(data));
     };
 
+    const handleChangeAvatar = (event: any) => {
+        if (event.target.files && event.target.files[0]) {
+            let reader = new FileReader();
+            reader.onload = (e: any) => {
+                const img = refImg.current;
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    };
+
     return user ? (
         <section>
             <div className='container'>
@@ -51,10 +67,10 @@ export const UserPage = (props: any) => {
                 <Container>
                     <form onSubmit={handleSubmit}>
                         <WrapperImg>
-                            <Img src={avatar ? `https://devlab.website/${avatar}` : placeholder} alt='' />
+                            <Img src={avatarImg ? `https://devlab.website/${avatarImg}` : placeholder} ref={refImg} />
                             <LabelInputFile htmlFor='file'>
                                 Choose File
-                                <InputFile type='file' id='file' name='avatar' />
+                                <InputFile onChange={handleChangeAvatar} type='file' id='file' name='avatar' />
                             </LabelInputFile>
                         </WrapperImg>
                         <UserInfo>
@@ -64,7 +80,7 @@ export const UserPage = (props: any) => {
                             <UserName>
                                 <span>Name: </span>
                                 <input
-                                    value={userName}
+                                    value={userName || ''}
                                     type='text'
                                     name='name'
                                     onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
@@ -76,7 +92,7 @@ export const UserPage = (props: any) => {
                                 <span> Bio:</span>
                                 <textarea
                                     name='bio'
-                                    value={userBio}
+                                    value={userBio || ''}
                                     onChange={(evt: React.ChangeEvent<HTMLTextAreaElement>) =>
                                         setUserBio(evt.target.value)
                                     }

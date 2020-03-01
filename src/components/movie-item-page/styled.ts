@@ -8,6 +8,7 @@ export const Title = styled.h1`
     font-style: normal;
     line-height: 1.29;
     margin-top: 0;
+    color: ${props => props.theme.textColor};
 `;
 
 export const ImgWrapper = styled.div`
@@ -43,12 +44,14 @@ export const ListItem = styled.li`
     font-stretch: normal;
     font-style: normal;
     line-height: 1.25;
+    color: ${props => props.theme.textColor};
 
     &::before {
         right: -8px;
         color: grey;
         top: 0;
         position: absolute;
+        color: ${props => props.theme.textColor};
         content: '|';
     }
 `;

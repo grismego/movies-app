@@ -1,11 +1,11 @@
 import React from 'react';
-import style from './footer.module.css';
+import { FooterWrapper } from './styled';
 
 export const Footer = () => {
     return (
-        <footer className={style.footer}>
+        <FooterWrapper>
             <a href='/'>Privacy Policy</a>
             <p>© 2010-2020 by Movier-plus.com, Inc.</p>
-        </footer>
+        </FooterWrapper>
     );
 };

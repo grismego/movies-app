@@ -4,12 +4,13 @@ import { Search } from '../search/search';
 import { User } from '../user/user';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { HeaderWrapper } from './styled';
 
 export const Header = () => {
     const isAuth = useSelector((state: RootStore) => state.isAuth);
 
     return (
-        <header className={styles.header}>
+        <HeaderWrapper className={styles.header}>
             <div className={styles.wrapper}>
                 <Link to='/' className={styles.logo}>
                     MOViER+
@@ -17,6 +18,6 @@ export const Header = () => {
                 <Search />
                 {isAuth ? <User /> : <Link to='/login'>Log in</Link>}
             </div>
-        </header>
+        </HeaderWrapper>
     );
 };

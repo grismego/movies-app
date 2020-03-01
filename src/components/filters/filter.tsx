@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addToFilter } from '../../reducers/actions';
 import { getUnicGenre } from '../../reducers/selectors';
 import { ButtonElem } from '../button/button';
+import { Label } from './styled';
 
 export const Filters = () => {
     const movies = useSelector((state: RootStore) => state);
@@ -23,10 +24,10 @@ export const Filters = () => {
         <div className={styles.form}>
             {unicGenres.map(genre => {
                 return (
-                    <label htmlFor={genre} key={genre}>
+                    <Label htmlFor={genre} key={genre}>
                         <input type='checkbox' id={genre} name={genre} onChange={handleChange} />
                         {genre}
-                    </label>
+                    </Label>
                 );
             })}
 

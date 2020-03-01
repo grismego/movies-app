@@ -9,7 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
 import { rootSaga } from './reducers/saga';
 import { BrowserRouter } from 'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { light, dark } from './themes/theme';
 
 const sagaMiddleware = createSagaMiddleware();
