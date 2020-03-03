@@ -20,6 +20,7 @@ type RootStore = {
     search: string | any;
     suggestions: string[];
     selectedFilters: any;
+    isAuth: string;
     user: any;
 };
 

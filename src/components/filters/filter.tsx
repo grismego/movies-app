@@ -3,6 +3,7 @@ import styles from './filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToFilter } from '../../reducers/actions';
 import { getUnicGenre } from '../../reducers/selectors';
+import { ButtonElem } from '../button/button';
 
 export const Filters = () => {
     const movies = useSelector((state: RootStore) => state);
@@ -28,14 +29,17 @@ export const Filters = () => {
                     </label>
                 );
             })}
-            <button
+
+            <ButtonElem
+                small
+                primary
                 onClick={() => {
                     const filteredMap = new Map([...filters].filter(([_, value]) => value));
                     dispatch(addToFilter(filteredMap));
                 }}
             >
                 Apply
-            </button>
+            </ButtonElem>
         </div>
     );
 };

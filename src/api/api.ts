@@ -10,18 +10,20 @@ type ApiT = {
 type LoadT = {
     url: string;
     method?: any;
-    body?: null;
+    body?: null | any;
     headers?: Headers;
 };
 
 export class ApiService {
     private _endPoint: string;
     private _authorization: string;
+    private _login: null | string;
 
     constructor({ endPoint, authorization = null }: ApiT) {
         this._endPoint = endPoint;
         this._authorization = authorization;
         this._getStore = this._getStore.bind(this);
+        this._login = null;
 
         Object.assign(this, { endPoint, authorization });
     }
@@ -36,6 +38,7 @@ export class ApiService {
     _getStore() {
         const storage = store.getState().user;
         const { login, password } = storage;
+        this._login = login;
         return btoa(`${login}:${password}`);
     }
 
@@ -44,7 +47,6 @@ export class ApiService {
         method = null,
         body = null,
         headers = new Headers({
-            'Content-Type': 'application/json',
             Origin: 'http://localhost:3000/',
             Authorization: `Basic ${this._authorization || this._getStore()}`,
         }),
@@ -64,6 +66,10 @@ export class ApiService {
         });
     }
 
+    sendingUserInfo(formData: any) {
+        return this._load({ url: `user/${this._login}`, method: METHODS.PUT, body: formData });
+    }
+
     getMovies() {
         return this._load({ url: `movies`, method: METHODS.GET });
     }
@@ -73,6 +79,6 @@ export class ApiService {
     }
 
     getUser() {
-        return this._load({ url: `user/IamAlexey95`, method: METHODS.GET });
+        return this._load({ url: `user/${this._login}`, method: METHODS.GET });
     }
 }

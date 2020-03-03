@@ -3,8 +3,22 @@ body {
     font-family: 'PT Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100%;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+#root {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
 }
