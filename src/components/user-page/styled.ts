@@ -48,7 +48,7 @@ export const UserInfo = styled.div`
         display: inline-block;
         vertical-align: middle;
         margin-right: 24px;
-        color: #000000;
+        color: ${props => props.theme.textColor};
     }
 `;
 
@@ -65,6 +65,8 @@ export const UserName = styled.div`
         color: #000;
         border-radius: 8px;
         border: solid 1px #dedede;
+        background: ${props => props.theme.bgColor};
+        color: ${props => props.theme.textColor};
     }
 `;
 export const UserBio = styled.div`
@@ -77,6 +79,8 @@ export const UserBio = styled.div`
         flex-grow: 1;
         border-radius: 8px;
         border: solid 1px #dedede;
+        background: ${props => props.theme.bgColor};
+        color: ${props => props.theme.textColor};
     }
 `;
 
@@ -100,4 +104,5 @@ export const List = styled.div`
 export const Title = styled.h3`
     width: 100%;
     margin-top: 24px;
+    color: ${props => props.theme.textColor};
 `;

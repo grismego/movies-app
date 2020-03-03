@@ -55,3 +55,8 @@ export const ListItem = styled.li`
         content: '|';
     }
 `;
+
+export const Description = styled.p`
+    font-size: 16px;
+    color: ${props => props.theme.textColor};
+`;

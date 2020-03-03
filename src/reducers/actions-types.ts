@@ -14,3 +14,4 @@ export const LOG_IN_FAILED = 'LOG_IN_FAILED';
 export const ADD_BIO = 'ADD_BIO';
 export const ADD_NAME = 'ADD_NAME';
 export const ADD_USER_INFO = 'ADD_USER_INFO';
+export const CHANGE_THEME = 'CHANGE_THEME';

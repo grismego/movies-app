@@ -5,7 +5,7 @@ import { selectDesiredMovies } from '../../reducers/selectors';
 import { Spinner } from '../spinner/spinner';
 import { POSTER_PATH } from '../../constants';
 
-import { List, Title, Img, ListItem, ImgWrapper, ContentWrapper } from './styled';
+import { List, Title, Img, ListItem, ImgWrapper, ContentWrapper, Description } from './styled';
 
 export const MovieItemPage = (props: any) => {
     const { id } = props.match.params;
@@ -28,7 +28,7 @@ export const MovieItemPage = (props: any) => {
                     </List>
                 </div>
                 <div>
-                    <p>{movie.overview}</p>
+                    <Description>{movie.overview}</Description>
                 </div>
             </ContentWrapper>
         </div>

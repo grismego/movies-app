@@ -59,4 +59,9 @@ export const logInFailed = (state: RootStore, action: { payload: number }) => ({
     isAuth: false,
 });
 
+export const changeTheme = (state: RootStore, action: { payload: string }) => ({
+    ...state,
+    theme: action.payload,
+});
+
 export const restoreState = (state: RootStore) => state;

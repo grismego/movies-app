@@ -6,6 +6,8 @@ const getGenres = (state: RootStore) => state.movies.map(movie => movie.genres);
 
 const getUser = (state: RootStore) => state.user;
 
+const getSuggestions = (state: RootStore) => state.suggestions;
+
 const getDesiredMovies = (state: RootStore) => {
     const { search, selectedFilters } = state;
 
@@ -26,6 +28,8 @@ const getDesiredMovies = (state: RootStore) => {
     return state.movies;
 };
 
+export const selectedUser = createSelector(getUser, user => user);
+
 export const selectDesiredMovies = createSelector(getDesiredMovies, movies => movies);
 
 export const selectFavoriteMovies = createSelector(getMovies, getUser, (movies, user) =>
@@ -39,3 +43,5 @@ export const getFavoritesMovies = createSelector(getMovies, movies => movies.fil
 export const getMoviesTitle = createSelector(getMovies, (movies: MovieItem[]) =>
     movies.map((movie: MovieItem) => movie.title)
 );
+
+export const selectedSuggestions = createSelector(getSuggestions, suggestions => suggestions.slice(0, 5));

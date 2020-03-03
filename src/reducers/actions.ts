@@ -13,6 +13,7 @@ import {
     LOG_IN_FAILED,
     LOG_IN,
     ADD_USER_INFO,
+    CHANGE_THEME,
 } from './actions-types';
 
 export const addMovies = (newElements: MovieItem[]) => ({
@@ -72,6 +73,11 @@ export const addSearch = (value: string) => ({ type: ADD_SEARCH, payload: value 
 export const filterMovies = (name: string) => ({
     type: FILTER_MOVIES,
     payload: name,
+});
+
+export const changeTheme = (value: string) => ({
+    type: CHANGE_THEME,
+    payload: value,
 });
 
 export const resetStore = () => ({ type: RESET_ALL });
