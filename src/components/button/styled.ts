@@ -10,9 +10,9 @@ export const Button = styled.button`
     letter-spacing: normal;
     text-align: left;
     border: none;
-    background: white;
+    background: ${props => props.theme.btnBgColor};
     border-radius: 12px 0 12px 12px;
-    color: #0093ff;
+    color: ${props => props.theme.btnTextColor};
     padding: ${(props: any) => (props.small ? '5px 8px' : '9px 24px')};
     border: solid 2px ${(props: any) => (props.primary ? '#0093ff' : '#d8d8d8')};
     cursor: pointer;

@@ -24,10 +24,13 @@ export const addSearchValues = (state: RootStore, action: { payload: string }) =
     search: action.payload,
 });
 
-export const addingLike = (state: RootStore, action: { payload: number }) => ({
-    ...state,
-    user: { ...state.user, likes: [...state.user.likes, action.payload] },
-});
+export const addingLike = (state: RootStore, action: { payload: number }) => {
+    console.log(action.payload);
+    return {
+        ...state,
+        user: { ...state.user, likes: [...state.user.likes, action.payload] },
+    };
+};
 
 export const removeLike = (state: RootStore, action: { payload: number }) => ({
     ...state,

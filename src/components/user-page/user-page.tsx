@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { Spinner } from '../spinner/spinner';
 import { addingUserInfo } from '../../reducers/actions';
-import { selectFavoriteMovies } from '../../reducers/selectors';
+import { selectFavoriteMovies, selectedUser } from '../../reducers/selectors';
 import {
     WrapperImg,
     Img,
@@ -22,7 +22,7 @@ import placeholder from './placeholder.png';
 import { MovieItem } from '../movie-item/movie-item';
 
 export const UserPage = () => {
-    const user = useSelector((state: RootStore) => state.user);
+    const user = useSelector(selectedUser);
 
     const dispatch = useDispatch();
 
@@ -99,7 +99,7 @@ export const UserPage = () => {
                                 />
                             </UserBio>
                             <ButtonBlock>
-                                <button>cancel</button>
+                                <button onClick={e => e.preventDefault()}>cancel</button>
                                 <button type='submit'>save</button>
                             </ButtonBlock>
                         </UserInfo>
