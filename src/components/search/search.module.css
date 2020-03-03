@@ -9,7 +9,6 @@
     border-radius: 12px 0 12px 12px;
     flex-basis: 100%;
     display: flex;
-    /* filter: invert(100%); */
 }
 .form {
     display: flex;

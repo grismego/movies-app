@@ -33,11 +33,6 @@ export const Search = () => {
     return (
         <div className={styles.searchWrapper}>
             <div className={styles.search}>
-                {/* <select name='' id=''>
-                    <option value='All'>All</option>
-                    <option value='All'>Director</option>
-                    <option value='All'>Advanced</option>
-                </select> */}
                 <Select />
                 <WrapperSearch>
                     <Autosuggest
