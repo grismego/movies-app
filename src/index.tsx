@@ -20,7 +20,7 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter basename={'/movies-app'}>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <ThemeWrapper>
                 <App />
             </ThemeWrapper>
