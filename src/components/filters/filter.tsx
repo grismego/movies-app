@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import styles from './filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToFilter } from '../../reducers/actions';
 import { getUnicGenre } from '../../reducers/selectors';
 import { ButtonElem } from '../button/button';
-import { Label } from './styled';
+import { Label, Wrapper } from './styled';
 
 export const Filters = () => {
     const movies = useSelector((state: RootStore) => state);
+    const selectedFilter = useSelector((state: RootStore) => state.selectedFilter);
     const unicGenres = Array.from(getUnicGenre(movies));
 
     const [filters, setActive] = useState<any>(new Map());
@@ -20,8 +20,10 @@ export const Filters = () => {
         setActive(filters.set(item, isChecked));
     };
 
+    console.log(selectedFilter);
+
     return (
-        <div className={styles.form}>
+        <Wrapper filter={selectedFilter}>
             {unicGenres.map(genre => {
                 return (
                     <Label htmlFor={genre} key={genre}>
@@ -41,6 +43,6 @@ export const Filters = () => {
             >
                 Apply
             </ButtonElem>
-        </div>
+        </Wrapper>
     );
 };

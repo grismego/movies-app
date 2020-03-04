@@ -13,8 +13,10 @@ import { BaseLayout } from './components/layout/layout';
 import { Login } from './components/login/login';
 import { NotFound } from './components/not-found/not-found';
 import { PrivateRouter } from './components/private-route/private-route';
+import { useSelector } from 'react-redux';
 
 const App: React.FC = () => {
+    const isAuth = useSelector((state: RootStore) => state.isAuth);
     return (
         <Router>
             <Wrapper>
@@ -27,7 +29,7 @@ const App: React.FC = () => {
                         <PrivateRouter
                             path='/user'
                             predicate={arg => arg}
-                            valueToBeChecked={localStorage.getItem('isAuth')}
+                            valueToBeChecked={isAuth}
                             SuccessRoute={() => <UserPage />}
                             FailureRoute={() => <NotFound />}
                         />

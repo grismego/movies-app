@@ -67,4 +67,9 @@ export const changeTheme = (state: RootStore, action: { payload: string }) => ({
     theme: action.payload,
 });
 
+export const changeSelect = (state: RootStore, action: { payload: string }) => ({
+    ...state,
+    selectedFilter: action.payload,
+});
+
 export const restoreState = (state: RootStore) => state;

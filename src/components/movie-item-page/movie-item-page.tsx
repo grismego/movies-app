@@ -32,9 +32,15 @@ export const MovieItemPage = (props: any) => {
             <ContentWrapper>
                 <Title>{movie.title}</Title>
                 <div>
-                    <ButtonElem onClick={() => changeFavorite(movie)}>
-                        {user.likes && user.likes.indexOf(movie.id) >= 0 ? `Remove from favorites` : `Add to Favorites`}
-                    </ButtonElem>
+                    {user.likes ? (
+                        <ButtonElem onClick={() => changeFavorite(movie)}>
+                            {user.likes && user.likes.indexOf(movie.id) >= 0
+                                ? `Remove from favorites`
+                                : `Add to Favorites`}
+                        </ButtonElem>
+                    ) : (
+                        ''
+                    )}
                 </div>
                 <div>
                     <List>

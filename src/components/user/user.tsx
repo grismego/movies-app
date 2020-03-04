@@ -4,6 +4,7 @@ import styles from './user.module.css';
 import { Link } from 'react-router-dom';
 import placeholder from '../user-page/placeholder.png';
 import { selectedUser } from '../../reducers/selectors';
+import { UserName } from './styled';
 
 export const User = () => {
     const user = useSelector(selectedUser);
@@ -17,7 +18,7 @@ export const User = () => {
                 className={styles.avatar}
             />
             <Link to='/user'>
-                <span className={styles.name}>{user && user.login}</span>
+                <UserName>{user && user.login}</UserName>
             </Link>
         </div>
     );

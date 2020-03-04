@@ -14,6 +14,7 @@ import {
     LOG_IN,
     ADD_USER_INFO,
     CHANGE_THEME,
+    CHANGE_SELECT,
 } from './actions-types';
 
 export const addMovies = (newElements: MovieItem[]) => ({
@@ -78,6 +79,11 @@ export const filterMovies = (name: string) => ({
 export const changeTheme = (value: string) => ({
     type: CHANGE_THEME,
     payload: value,
+});
+
+export const changeSelect = (value: string) => ({
+    type: CHANGE_SELECT,
+    payload: value.toLowerCase(),
 });
 
 export const resetStore = () => ({ type: RESET_ALL });

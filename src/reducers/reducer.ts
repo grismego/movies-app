@@ -11,6 +11,7 @@ import {
     LOG_IN_SUCCES,
     ADD_USER_INFO,
     CHANGE_THEME,
+    CHANGE_SELECT,
 } from './actions-types';
 import {
     fetchMovies,
@@ -26,6 +27,7 @@ import {
     logInSucces,
     addUserInfo,
     changeTheme,
+    changeSelect,
 } from './handlers';
 
 const intialState = {
@@ -35,6 +37,7 @@ const intialState = {
     selectedFilters: [],
     isAuth: Boolean(localStorage.getItem('isAuth')),
     theme: 'dark',
+    selectedFilter: 'all',
     user: {
         login: 'IamAlexey95',
         password: 'sf2YCHKifM',
@@ -54,6 +57,7 @@ const actionHandler = new Map<string, any>([
     [LOG_IN, logIn],
     [ADD_USER_INFO, addUserInfo],
     [CHANGE_THEME, changeTheme],
+    [CHANGE_SELECT, changeSelect],
     ['DEFAULT', restoreState],
 ]);
 
