@@ -22,6 +22,8 @@ type RootStore = {
     selectedFilters: any;
     isAuth: string;
     user: any;
+    theme: string;
+    selectedFilter: string;
 };
 
 type Action<T> = { type: string; payload: T };

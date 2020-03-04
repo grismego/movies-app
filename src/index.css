@@ -11,11 +11,6 @@ body {
     display: table;
     clear: both;
 }
-#root {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
 
 *,
 *:before,

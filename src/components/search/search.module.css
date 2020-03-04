@@ -4,7 +4,7 @@
     flex-wrap: wrap;
 }
 .search {
-    border: solid 1px #dedede;
+    border: solid 1px inherit;
     background-color: #ffffff;
     border-radius: 12px 0 12px 12px;
     flex-basis: 100%;

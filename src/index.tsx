@@ -9,8 +9,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
 import { rootSaga } from './reducers/saga';
 import { BrowserRouter } from 'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components';
-import { light, dark } from './themes/theme';
+import { ThemeWrapper } from './components/theme/theme';
+import './index.css';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -21,9 +21,9 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <ThemeProvider theme={light}>
+            <ThemeWrapper>
                 <App />
-            </ThemeProvider>
+            </ThemeWrapper>
         </BrowserRouter>
     </Provider>,
 

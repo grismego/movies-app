@@ -45,7 +45,13 @@ export const Login = (props: any) => {
                         <Link href={`#`} onClick={() => history.push(`/`)}>
                             Cancel
                         </Link>
-                        <Button onClick={() => dispatch(logIn(login, password))}>Sign In</Button>
+                        <Button
+                            onClick={() => {
+                                dispatch(logIn(login, password));
+                            }}
+                        >
+                            Sign In
+                        </Button>
                     </div>
                 </WrappedFooter>
             </Modal>

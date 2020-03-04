@@ -24,10 +24,13 @@ export const addSearchValues = (state: RootStore, action: { payload: string }) =
     search: action.payload,
 });
 
-export const addingLike = (state: RootStore, action: { payload: number }) => ({
-    ...state,
-    user: { ...state.user, likes: [...state.user.likes, action.payload] },
-});
+export const addingLike = (state: RootStore, action: { payload: number }) => {
+    console.log(action.payload);
+    return {
+        ...state,
+        user: { ...state.user, likes: [...state.user.likes, action.payload] },
+    };
+};
 
 export const removeLike = (state: RootStore, action: { payload: number }) => ({
     ...state,
@@ -57,6 +60,16 @@ export const logInSucces = (state: RootStore, action: { payload: number }) => ({
 export const logInFailed = (state: RootStore, action: { payload: number }) => ({
     ...state,
     isAuth: false,
+});
+
+export const changeTheme = (state: RootStore, action: { payload: string }) => ({
+    ...state,
+    theme: action.payload,
+});
+
+export const changeSelect = (state: RootStore, action: { payload: string }) => ({
+    ...state,
+    selectedFilter: action.payload,
 });
 
 export const restoreState = (state: RootStore) => state;
