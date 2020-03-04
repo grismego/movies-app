@@ -5,7 +5,7 @@ import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
 import { UserPage } from './components/user-page/user-page';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 import './index.css';
 import { Wrapper } from './styled';
 import { MovieItemPage } from './components/movie-item-page/movie-item-page';
@@ -14,11 +14,13 @@ import { Login } from './components/login/login';
 import { NotFound } from './components/not-found/not-found';
 import { PrivateRouter } from './components/private-route/private-route';
 import { useSelector } from 'react-redux';
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory();
 
 const App: React.FC = () => {
     const isAuth = useSelector((state: RootStore) => state.isAuth);
     return (
-        <Router>
+        <Router history={history}>
             <Wrapper>
                 <Header />
                 <BaseLayout>
